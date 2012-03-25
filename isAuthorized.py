@@ -23,7 +23,7 @@ def isAuthorized(f):
             return f(*args, **kwargs)
         else:
             if not authorization.isAuthorized():
-                return layout.getSignin()
+                return layout.getIndex()
             else:
                 authorization.checkAuthorization()
                 
