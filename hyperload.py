@@ -38,6 +38,12 @@ class hyperload(object):
         authentication.authenticate(code)
         
         raise cherrypy.HTTPRedirect("/home")
+        
+    @cherrypy.expose
+    def fb(self):
+        cherrypy.response.headers['Content-Type'] = "text/html"        
+
+        return open(constants.BASE_DIR + "fb.html").read()
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")
