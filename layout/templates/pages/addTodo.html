@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block infobtn %}
+{% endblock %}
+
+{% block pageTitle %}Add Todo{% endblock %}
+
+{% block logoutbtn %}
+{% endblock %}
+
+{% block statusFilter %}
+{% endblock %}
+
+{% block addtodobtn %}
+{% endblock %}
+
+{% block content %}
+    <form action="/addtodo" method="post">
+        <textarea rows="5" cols="50" id="todoName"></textarea>
+        <a data-rel="back" data-role="button" onclick="addTodo();" id="addTodo">Add</a>
+    </form>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

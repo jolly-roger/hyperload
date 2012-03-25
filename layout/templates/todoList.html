@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for todo in todos %}
+        <div class="todo" >
+            <input type="hidden" class="todoid" value="{{todo.id}}" />
+            <input type="hidden" class="todoPriority" value="{{todo.priority}}" />
+            <table id="todoData">
+                <tr>
+                    <td colspan="3">
+                        {{todo.name}}    
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td id="isShared">
+                        {% if todo.isShared %}
+                            shared
+                        {% endif %}
+                    </td>
+                    <td id="statusName">
+                        {% if statuses is defined %}
+                            <select id="statusSelector" class="statusSelector">
+                                {% for status in statuses %}
+                                    <option
+                                        {% if todo.statusName == status.name %}
+                                            selected="selected"
+                                        {% endif %}
+                                        value="{{status.id}}">{{status.name}}</option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            {{todo.statusName}}
+                        {% endif%}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block statusFilter %}
+            <div style="float: left;">
+                <table>
+                    <tr>
+                        <td>
+                            <h3>Status Filter:</h3>
+                        </td>
+                        <td>
+                            <select id="statusFilter" data-inline="true">
+                                {% for status in statuses %}
+                                    <option
+                                        {% if statusid == status.id %}
+                                            selected="selected"
+                                        {% endif %}
+                                        value="{{status.id}}">{{status.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+{% endblock %}
+
+{#
+{% block extra %}
+    {% if friends is defined %}
+        {%for friend in friends["data"] %}
+            <div class="friend" >
+                <input type="hidden" class="friendid" value="{{friend["id"]}}" />
+                {{friend["name"]}}
+            </div>
+        {% endfor %}
+    {% endif%}
+{% endblock %}
+#}
