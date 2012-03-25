@@ -2,10 +2,13 @@ import cherrypy
 import os.path
 
 
+from layout import layout
+
+
 class hyperload(object):
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):
-        return "hello"
+        return layout.getIndex()
     
     @cherrypy.expose
     def logout(self):
