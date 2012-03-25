@@ -5,90 +5,16 @@
     {% block head%}
         <script type="text/javascript">if(window.location.hash == '#_=_') window.location.hash = '';</script>
         
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-        
         {% block scriptsAndStyles%}
             <script type="text/javascript" src="/javascript"></script>
             <link rel="stylesheet" type="text/css" href="/css" />
         {% endblock%}
         
-        <title>queuetodo</title> 
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <title>hyperload</title> 
     {% endblock %}
     </head>
     <body>
-        <div data-role="page" data-fullscreen="true">
-
-            <div data-role="header">
-                {% block infobtn %}
-                    <a href="/info" data-ajax="false" data-icon="info" data-iconpos="notext">information</a>
-                {% endblock %}
-                <h1>{% block pageTitle %}Queuetodo{% endblock %}</h1>
-                {% block logoutbtn %}
-                    {% if not isSignedRequest %}
-                        <a href="/logout" data-ajax="false">logout</a>
-                    {% endif %}
-                {% endblock %}
-            </div><!-- /header -->
-
-            {% block navbar %}
-            <div data-role="navbar">
-                <ul>
-                    {#<li><a href="/shared" data-ajax="false" {% block navSharedActive %}{% endblock %}>shared</a></li>
-                    <li><a href="/sharedwithme" data-ajax="false" {% block navSharedWithMeActive %}{% endblock %}>shared with me</a></li>#}
-                </ul>
-            </div><!-- /navbar -->
-            {% endblock%}
-        
-            {% block statusFilter %}
-            {% endblock %}
-        
-            {% block addtodobtn %}
-                <div style="float: left;">
-                    <a href="/addtodo" data-role="button" data-rel="dialog" data-inline="true" data-icon="plus"
-                       data-iconpos="notext">add todo</a>
-                </div>
-            {% endblock %}
-            
-            <div data-role="content" style="clear: both;">	
-            {% block mainContent %}
-            
-            {% block content %}
-                {{ content }}
-            {% endblock %}
-            
-            
-        {#
-        <div id="container">
-            <div id="wrapper">
-                <div id="content">
-                
-                </div>
-            </div>
-            <div id="navigation">
-            
-            </div>
-            <div id="extra">
-            {% block extra %}
-                {{ extra }}
-            {% endblock %}
-            </div>
-            <div id="footer">
-            </div>
-        </div>
-        #}
-        
-
-            {% endblock %}
-            </div><!-- /content -->
-
-            {% block footer %}
-            <div data-role="footer">   
-            </div><!-- /footer -->
-            {% endblock %}
-            
-        </div><!-- /page -->
+        {% block mainContent %}
+        {% endblock %}
     </body>
 </html>
