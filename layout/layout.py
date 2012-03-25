@@ -16,3 +16,7 @@ def getIndex():
 def getLogin():
     tmpl = env.get_template("pages/login.html")
     return tmpl.render()
+    
+def getHome():
+    tmpl = env.get_template("pages/home.html")
+    return tmpl.render()

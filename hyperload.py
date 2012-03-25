@@ -15,6 +15,11 @@ class hyperload(object):
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):
         return layout.getIndex()
+        
+    @cherrypy.expose
+    @isAuthorized
+    def home(self):
+        return layout.getHome()
     
     @cherrypy.expose
     def logout(self):
@@ -32,7 +37,7 @@ class hyperload(object):
         authorization.callbackHandler(code)
         authentication.authenticate(code)
         
-        raise cherrypy.HTTPRedirect("/")
+        raise cherrypy.HTTPRedirect("/home")
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")
