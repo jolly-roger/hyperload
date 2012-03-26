@@ -10,4 +10,4 @@ SET_PRIORITY = "select setpriority(%(todoid)s, %(todopriority)s);"
 GET_ALL_STATUSES = "select * from status;"
 
 
-ADD_USER = "select addfbuser(%(fbuserid)s);"
+ADD_FB_USER = "select addfbuser(%(fbuserid)s);"
