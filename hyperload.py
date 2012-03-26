@@ -13,6 +13,7 @@ import facebook.user
 from layout import layout
 
 import dal.user
+import dal.resource
 
 
 class hyperload(object):
@@ -46,6 +47,13 @@ class hyperload(object):
             u.addFbUser(facebook.user.getUserId())
         
         raise cherrypy.HTTPRedirect("/home")
+    
+    @cherrypy.expose
+    @isAuthorized
+    def addresource(self, name=None):
+        if name is not None and not name == "":
+            r = dal.resource.resource()
+            r.add(name, facebook.user.getUserId())
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")
