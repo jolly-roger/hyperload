@@ -21,6 +21,16 @@
     
 	<script>
 	$(function() {
+        $.getJSON('/getresources', function(data) {
+            for(var i = 0; i < data.length; i ++){
+                $( "#resources tbody" ).append( "<tr>" +
+                    "<td>" + data[1] + "</td>" + 
+                    "<td>" + data[2] + "</td>" + 
+                    "<td>" + data[3] + "</td>" +
+                "</tr>" ); 
+            };
+        });
+        
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
 		

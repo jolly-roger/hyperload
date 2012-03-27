@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION getresources(outeruserid bigint)
  RETURNS setof resource
 AS $BODY$
 BEGIN
-    return query select r."alias", r."domain"
+    return query select r.*
         from resource as r
         inner join user_resource as ur
             on r.id_resource = ur.resource_id
