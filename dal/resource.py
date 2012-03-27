@@ -9,3 +9,8 @@ class resource(base.base):
         self.cur.execute(constants.ADD_RESOURCE, {"resourcealias": alias, "resourcedomain": domain,
             "outeruserid": outerUserId})
         self.conn.commit()
+        
+    def get(self, outerUserId):
+        self.cur.execute(constants.GET_RESOURCES, {"outeruserid": outerUserId})
+        
+        return self.cur.fetchall()

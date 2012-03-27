@@ -14,3 +14,4 @@ ADD_FB_USER = "select addfbuser(%(fbuserid)s);"
 
 
 ADD_RESOURCE = "select addresource(%(resourcealias)s, %(resourcedomain)s, %(outeruserid)s);"
+GET_RESOURCES = "select * from getresources(%(outeruserid)s);"
