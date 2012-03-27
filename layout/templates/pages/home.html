@@ -79,6 +79,8 @@
 					//bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
 
 					if ( bValid ) {
+                        $.post("/addresource", {alias: alias.val(), domain: domain.val()} );
+                        
 						$( "#resources tbody" ).append( "<tr>" +
 							"<td>" + alias.val() + "</td>" + 
 							"<td>" + domain.val() + "</td>" + 
@@ -86,8 +88,6 @@
 						"</tr>" ); 
 						$( this ).dialog( "close" );
 					}
-                    
-                    $.post("/addresource", {alias: alias.val(), domain: domain.val()} );
 				},
 				Cancel: function() {
 					$( this ).dialog( "close" );
