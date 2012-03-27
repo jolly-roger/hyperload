@@ -30,7 +30,7 @@ class hyperload(object):
     @cherrypy.expose
     def logout(self):
         authorization.checkAuthorization()
-        user.unloadUser()
+        facebook.user.unloadUser()
         
         raise cherrypy.HTTPRedirect("/")
     
