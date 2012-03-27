@@ -50,10 +50,10 @@ class hyperload(object):
     
     @cherrypy.expose
     @isAuthorized
-    def addresource(self, name=None):
-        if name is not None and not name == "":
+    def addresource(self, alias=None, domain=None):
+        if alias is not None and not alias == "" and domain is not None and not domain == "":
             r = dal.resource.resource()
-            r.add(name, facebook.user.getUserId())
+            r.add(alias, domain, facebook.user.getUserId())
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")

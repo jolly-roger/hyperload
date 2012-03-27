@@ -13,4 +13,4 @@ GET_ALL_STATUSES = "select * from status;"
 ADD_FB_USER = "select addfbuser(%(fbuserid)s);"
 
 
-ADD_RESOURCE = "select addresource(%(resourcename)s, %(outeruserid)s);"
+ADD_RESOURCE = "select addresource(%(resourcealias)s, %(resourcedoamin)s %(outeruserid)s);"
