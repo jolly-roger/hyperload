@@ -23,11 +23,20 @@
 	$(function() {
         $.getJSON('/getresources', function(data) {
             for(var i = 0; i < data.length; i ++){
-                $( "#resources tbody" ).append( "<tr>" +
+                var isVerified = Boolean(data[i][3]);
+                var resourceHtml = "<tr>" +
                     "<td>" + data[i][1] + "</td>" + 
-                    "<td>" + data[i][2] + "</td>" + 
-                    "<td>" + data[i][3] + "</td>" +
-                "</tr>" ); 
+                    "<td>" + data[i][2] + "</td>";
+                    
+                if(isVerified){
+                    resourceHtml += "<td>" + Verified + "</td>" +
+                        "</tr>";
+                }else{
+                    resourceHtml += "<td><button id=\"resource_" + data[i][0] + "\">Add resource</button></td>" +
+                        "</tr>";
+                };
+                
+                //$("#resource_" + data[i][0]).button()
             };
         });
         
@@ -133,7 +142,6 @@
 	</form>
 </div>
 
-
 <div id="resources-contain" class="ui-widget">
 	<h1>Resources:</h1>
 	<table id="resources" class="ui-widget ui-widget-content">
@@ -141,7 +149,7 @@
 			<tr class="ui-widget-header ">
 				<th>Alias</th>
 				<th>Domain</th>
-				<th>Is Verified</th>
+				<th>Is&nbsp;Verified</th>
 			</tr>
 		</thead>
 		<tbody>

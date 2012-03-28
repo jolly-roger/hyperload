@@ -66,6 +66,11 @@ class hyperload(object):
         r.close()
         
         return  json.dumps(resources)
+        
+    @cherrypy.expose
+    @isAuthorized
+    def verifyresource(self):
+        pass
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")
