@@ -48,9 +48,9 @@ class hyperload(object):
         #    u.addFbUser(facebook.user.getUserId())
         #    u.close()
         
-        #raise cherrypy.HTTPRedirect("/home")
+        raise cherrypy.HTTPRedirect("/home")
         
-        return "hello :)"
+        #return "hello :)"
     
     @cherrypy.expose
     @isAuthorized
