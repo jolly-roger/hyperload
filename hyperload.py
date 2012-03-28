@@ -44,9 +44,9 @@ class hyperload(object):
             authorization.callbackHandler(code)
         #    authentication.authenticate(code)
         
-        #    u = dal.user.user()
-        #    u.addFbUser(facebook.user.getUserId())
-        #    u.close()
+            u = dal.user.user()
+            u.addFbUser(facebook.user.getUserId())
+            u.close()
         
         raise cherrypy.HTTPRedirect("/home")
         
