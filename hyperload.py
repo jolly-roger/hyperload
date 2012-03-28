@@ -46,7 +46,7 @@ class hyperload(object):
 
             u = dal.user.user()
             u.addFbUser(facebook.user.getUserId())
-            u.close()
+            #u.close()
         
         raise cherrypy.HTTPRedirect("/home")
     
@@ -56,14 +56,14 @@ class hyperload(object):
         if alias is not None and not alias == "" and domain is not None and not domain == "":
             r = dal.resource.resource()
             r.add(alias, domain, facebook.user.getUserId())
-            r.close()
+            #r.close()
             
     @cherrypy.expose
     @isAuthorized
     def getresources(self):
         r = dal.resource.resource()
         resources = r.get(facebook.user.getUserId())
-        r.close()
+        #r.close()
         
         return  json.dumps(resources)
         
