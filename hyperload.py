@@ -42,8 +42,8 @@ class hyperload(object):
     def authorizecallback(self, code=None, error_reason=None, error=None):
         if code is not None:
             authorization.callbackHandler(code)
-        #    authentication.authenticate(code)
-        #
+            authentication.authenticate(code)
+        
         #    u = dal.user.user()
         #    u.addFbUser(facebook.user.getUserId())
         #    u.close()
