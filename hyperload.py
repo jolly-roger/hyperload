@@ -44,6 +44,11 @@ class hyperload(object):
             authorization.callbackHandler(code)
             authentication.authenticate(code)
         
+    @cherrypy.expose
+    def authenticatecallback(self, rawaccessdata=None):
+        if rawaccessdata is not None and not rawaccessdata == "":
+            authentication.callbackHandler(rawaccessdata)
+            
             u = dal.user.user()
             u.addFbUser(facebook.user.getUserId())
             u.close()
