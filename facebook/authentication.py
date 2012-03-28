@@ -9,7 +9,8 @@ from . import user
 def authenticate(code):
     req = urllib.request.Request("https://graph.facebook.com/oauth/access_token?" \
         "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
-        "&client_secret=" + constants.APP_SECRET + "&code=" + code, headers={"User-Agent": "Python-urlli~"})
+        "&client_secret=" + constants.APP_SECRET + "&code=" + code,
+        headers={"User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0"})
     raw_access_data = str(urllib.request.urlopen(req).read(), encoding="utf-8")
     
     
