@@ -40,9 +40,9 @@ def authenticate(code):
     params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
         "client_secret": constants.APP_SECRET, "code": code})
     
-    #raise cherrypy.HTTPRedirect("https://graph.facebook.com/oauth/access_token?%s" % params)
+    raise cherrypy.HTTPRedirect("https://graph.facebook.com/oauth/access_token?%s" % params)
     
-    return urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read()
+    #return urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read()
     
     #raw_access_data = str(urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read(),
     #    encoding="utf-8")
