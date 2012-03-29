@@ -37,10 +37,15 @@ from . import user
 #    user.loadUser(access_data['access_token'][0])
 
 def authenticate(code):
-    params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHENTICATE_CALLBACK_URL,
+    params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
         "client_secret": constants.APP_SECRET, "code": code})
     
-    raise cherrypy.HTTPRedirect("https://graph.facebook.com/oauth/access_token?%s" % params)
+    #raise cherrypy.HTTPRedirect("https://graph.facebook.com/oauth/access_token?%s" % params)
+    
+    urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params)
+    
+    #raw_access_data = str(urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read(),
+    #    encoding="utf-8")
     
 def callbackHandler(raw_access_data):    
     access_data = urllib.parse.parse_qs(raw_access_data)
