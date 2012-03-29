@@ -43,7 +43,7 @@ class hyperload(object):
     def authorizecallback(self, code=None, error_reason=None, error=None):
         if code is not None:
             authorization.callbackHandler(code)
-            authentication.authenticate(code)
+            return authentication.authenticate(code)
         
     @cherrypy.expose
     def authenticatecallback(self, rawaccessdata=None):
