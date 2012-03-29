@@ -42,7 +42,7 @@ def authenticate(code):
     
     #raise cherrypy.HTTPRedirect("https://graph.facebook.com/oauth/access_token?%s" % params)
     
-    urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params)
+    return urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read()
     
     #raw_access_data = str(urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read(),
     #    encoding="utf-8")
