@@ -81,7 +81,7 @@ class hyperload(object):
     
     @cherrypy.expose
     def testopenurl(self):
-        return str(urllib.request.urlopen("http://google.com").read())
+        return str(urllib.request.urlopen("http://google.com").read(), encoding="utf-8")
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")
