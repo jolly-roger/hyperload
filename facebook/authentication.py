@@ -40,7 +40,7 @@ def authenticate(code):
     params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
         "client_secret": constants.APP_SECRET, "code": code})
     
-    req = urllib.request.Request("https://graph.facebook.com/oauth/access_token?%s" % params,
+    req = urllib.request.Request("https://graph.facebook.com:80/oauth/access_token?%s" % params,
         headers={"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", 
             "Accept-Encoding": "gzip, deflate",
             "Accept-Language": "en-us,en;q=0.7,ru;q=0.3",
