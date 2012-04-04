@@ -40,18 +40,19 @@ def authenticate(code):
     params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
         "client_secret": constants.APP_SECRET, "code": code})
     
-    req = urllib.request.Request("https://graph.facebook.com:80/oauth/access_token?%s" % params,
-        headers={"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", 
-            "Accept-Encoding": "gzip, deflate",
-            "Accept-Language": "en-us,en;q=0.7,ru;q=0.3",
-            "Connection": "keep-alive",
-            "Host": "graph.facebook.com",
-            "Referer": "http://dig-dns.com/",
-            "User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0"})    
-    
+    req = urllib.request.Request("https://graph.facebook.com:80/oauth/access_token?%s" % params)
+    #,
+    #    headers={"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", 
+    #        "Accept-Encoding": "gzip, deflate",
+    #        "Accept-Language": "en-us,en;q=0.7,ru;q=0.3",
+    #        "Connection": "keep-alive",
+    #        "Host": "graph.facebook.com",
+    #        "Referer": "http://dig-dns.com/",
+    #        "User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0"})    
+    #
     #raise cherrypy.HTTPRedirect()
     
-    return urllib.request.urlopen(req).read()
+    return urllib.request.urlopen(req).geturl()#read()
     
     #raw_access_data = str(urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read(),
     #    encoding="utf-8")
