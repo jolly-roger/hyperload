@@ -35,20 +35,24 @@ def authenticate(code):
         reqcookies += "%s=%s;" % (name, cookie[name].value)
     
     req = urllib.request.Request("https://graph.facebook.com:80/oauth/access_token?%s" % params,
-        headers={"Cookie": reqcookies})    
+        headers={"Cookie": reqcookies})
     
-    raw_access_data = str(urllib.request.urlopen(req).read(), encoding="utf-8")
-        
-    #raw_access_data = str(urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?" \
-    #    "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
-    #    "&client_secret=" + constants.APP_SECRET + "&code=" + code).read(), encoding="utf-8")
+    urllib.request.urlopen(req)
     
-    access_data = urllib.parse.parse_qs(raw_access_data)
+    return "Test"
     
-    cherrypy.session[constants.FACEBOOK_ACCESS_TOKEN] = access_data['access_token'][0]
-    #cherrypy.session[constants.FACEBOOK_ACCESS_TOKEN]['expires'] = access_data['expires'][0]
-    
-    user.loadUser(access_data['access_token'][0])
+    #raw_access_data = str(urllib.request.urlopen(req).read(), encoding="utf-8")
+    #    
+    ##raw_access_data = str(urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?" \
+    ##    "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
+    ##    "&client_secret=" + constants.APP_SECRET + "&code=" + code).read(), encoding="utf-8")
+    #
+    #access_data = urllib.parse.parse_qs(raw_access_data)
+    #
+    #cherrypy.session[constants.FACEBOOK_ACCESS_TOKEN] = access_data['access_token'][0]
+    ##cherrypy.session[constants.FACEBOOK_ACCESS_TOKEN]['expires'] = access_data['expires'][0]
+    #
+    #user.loadUser(access_data['access_token'][0])
     
     #return "https://graph.facebook.com/oauth/access_token?" \
     #    "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
