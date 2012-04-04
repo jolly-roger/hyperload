@@ -36,9 +36,16 @@ def authenticate(code):
     
     #user.loadUser(access_data['access_token'][0])
     
-    return "https://graph.facebook.com/oauth/access_token?" \
-        "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
-        "&client_secret=" + constants.APP_SECRET + "&code=" + code
+    cookie = cherrypy.request.cookie
+
+    for name in cookie.keys():
+        res += "name: %s, value: %s<br>" % (name, cookie[name].value)
+    return res
+    
+    
+    #return "https://graph.facebook.com/oauth/access_token?" \
+    #    "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
+    #    "&client_secret=" + constants.APP_SECRET + "&code=" + code
 
 #def authenticate(code):
 #    params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
