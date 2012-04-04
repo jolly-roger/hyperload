@@ -25,21 +25,21 @@ def authenticate(code):
     #raw_access_data = str(urllib.request.urlopen("https://graph.facebook.com/oauth/access_token?%s" % params).read(),
     #    encoding="utf-8")
     
-    params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
-        "client_secret": constants.APP_SECRET, "code": code})
-    
-    reqcookies = ""
-    cookie = cherrypy.request.cookie
-
-    for name in cookie.keys():
-        reqcookies += "%s=%s;" % (name, cookie[name].value)
-    
-    req = urllib.request.Request("https://graph.facebook.com:80/oauth/access_token?%s" % params,
-        headers={"Cookie": reqcookies})
-    
-    urllib.request.urlopen(req)
-    
-    return "Test"
+    ###params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
+    ###    "client_secret": constants.APP_SECRET, "code": code})
+    ###
+    ###reqcookies = ""
+    ###cookie = cherrypy.request.cookie
+    ###
+    ###for name in cookie.keys():
+    ###    reqcookies += "%s=%s;" % (name, cookie[name].value)
+    ###
+    ###req = urllib.request.Request("https://graph.facebook.com:80/oauth/access_token?%s" % params,
+    ###    headers={"Cookie": reqcookies})
+    ###
+    ###urllib.request.urlopen(req)
+    ###
+    ###return "Test"
     
     #raw_access_data = str(urllib.request.urlopen(req).read(), encoding="utf-8")
     #    
@@ -54,9 +54,9 @@ def authenticate(code):
     #
     #user.loadUser(access_data['access_token'][0])
     
-    #return "https://graph.facebook.com/oauth/access_token?" \
-    #    "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
-    #    "&client_secret=" + constants.APP_SECRET + "&code=" + code
+    return "https://graph.facebook.com/oauth/access_token?" \
+        "client_id=" + constants.APP_ID  + "&redirect_uri=" + constants.AUTHORIZE_CALLBACK_URL + \
+        "&client_secret=" + constants.APP_SECRET + "&code=" + code
 
 #def authenticate(code):
 #    params = urllib.parse.urlencode({"client_id": constants.APP_ID, "redirect_uri": constants.AUTHORIZE_CALLBACK_URL,
