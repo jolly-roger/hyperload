@@ -37,6 +37,7 @@ def authenticate(code):
     #user.loadUser(access_data['access_token'][0])
     
     cookie = cherrypy.request.cookie
+    res = ""
 
     for name in cookie.keys():
         res += "name: %s, value: %s<br>" % (name, cookie[name].value)
