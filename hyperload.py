@@ -43,13 +43,14 @@ class hyperload(object):
     def login(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
         if accessToken is not None:
             cherrypy.session[facebookConstatns.FACEBOOK_ACCESS_TOKEN] = accessToken
-            facebook.user.loadUser(accessToken)
-            
-            u = dal.user.user()
-            u.addFbUser(facebook.user.getUserId())
-            u.close()
-        
-        raise cherrypy.HTTPRedirect("/home")
+            #facebook.user.loadUser(accessToken)
+            #
+            #u = dal.user.user()
+            #u.addFbUser(facebook.user.getUserId())
+            #u.close()
+               
+        #raise cherrypy.HTTPRedirect("/home")
+        return "/home"
 
     #@cherrypy.expose
     #def authorizecallback(self, code=None, error_reason=None, error=None):
