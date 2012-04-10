@@ -42,7 +42,7 @@ class hyperload(object):
     @cherrypy.expose
     def login(accessToken = None, expiresIn = None, signedRequest = None, userID = None):
         
-        cherrypy.log.error(accessToken is not None)
+        cherrypy.log.error(str(accessToken is not None))
         
         if accessToken is not None:
             cherrypy.session[facebookConstatns.FACEBOOK_ACCESS_TOKEN] = accessToken
