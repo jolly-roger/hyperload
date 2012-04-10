@@ -27,7 +27,7 @@
                 if (response.authResponse && response.authResponse.accessToken &&
                     response.authResponse.userID) {
                     jQuery.post( "/login", "accessToken=" + response.authResponse.accessToken +
-                        ";userID=" + response.authResponse.userID);
+                        "&userID=" + response.authResponse.userID);
                   //alert('Welcome!  Fetching your information.... ');
                   //FB.api('/me', function(response) {
                   //  console.log('Good to see you, ' + response.name + '.');
