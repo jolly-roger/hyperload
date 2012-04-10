@@ -34,10 +34,6 @@ class hyperload(object):
         facebook.user.unloadUser()
         
         raise cherrypy.HTTPRedirect("/")
-    
-    #@cherrypy.expose
-    #def login(self):
-    #    authorization.authorize();
         
     @cherrypy.expose
     def login(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
@@ -48,26 +44,8 @@ class hyperload(object):
             u = dal.user.user()
             u.addFbUser(facebook.user.getUserId())
             u.close()
-               
-        #raise cherrypy.HTTPRedirect("/home")
+            
         return "/home"
-
-    #@cherrypy.expose
-    #def authorizecallback(self, code=None, error_reason=None, error=None):
-    #    if code is not None:
-    #        authorization.callbackHandler(code)
-    #        return authentication.authenticate(code)
-        
-    #@cherrypy.expose
-    #def authenticatecallback(self, rawaccessdata=None):
-    #    if rawaccessdata is not None and not rawaccessdata == "":
-    #        authentication.callbackHandler(rawaccessdata)
-    #        
-    #        u = dal.user.user()
-    #        u.addFbUser(facebook.user.getUserId())
-    #        u.close()
-    #    
-    #    raise cherrypy.HTTPRedirect("/home")
     
     @cherrypy.expose
     @isAuthorized
@@ -90,11 +68,6 @@ class hyperload(object):
     @isAuthorized
     def verifyresource(self):
         pass
-    
-    
-    @cherrypy.expose
-    def testopenurl(self):
-        return str(urllib.request.urlopen("http://google.com").read(), encoding="utf-8")
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")
