@@ -35,26 +35,38 @@ class hyperload(object):
         
         raise cherrypy.HTTPRedirect("/")
     
-    @cherrypy.expose
-    def login(self):
-        authorization.authorize();        
-
-    @cherrypy.expose
-    def authorizecallback(self, code=None, error_reason=None, error=None):
-        if code is not None:
-            authorization.callbackHandler(code)
-            return authentication.authenticate(code)
+    #@cherrypy.expose
+    #def login(self):
+    #    authorization.authorize();
         
     @cherrypy.expose
-    def authenticatecallback(self, rawaccessdata=None):
-        if rawaccessdata is not None and not rawaccessdata == "":
-            authentication.callbackHandler(rawaccessdata)
+    def login(accessToken = None, expiresIn = None, signedRequest = None, userID = None):
+        if accessToken is not None:
+            cherrypy.session[facebookConstatns.FACEBOOK_ACCESS_TOKEN] = accessToken
+            facebook.user.loadUser(accessToken)
             
             u = dal.user.user()
             u.addFbUser(facebook.user.getUserId())
             u.close()
         
         raise cherrypy.HTTPRedirect("/home")
+
+    #@cherrypy.expose
+    #def authorizecallback(self, code=None, error_reason=None, error=None):
+    #    if code is not None:
+    #        authorization.callbackHandler(code)
+    #        return authentication.authenticate(code)
+        
+    #@cherrypy.expose
+    #def authenticatecallback(self, rawaccessdata=None):
+    #    if rawaccessdata is not None and not rawaccessdata == "":
+    #        authentication.callbackHandler(rawaccessdata)
+    #        
+    #        u = dal.user.user()
+    #        u.addFbUser(facebook.user.getUserId())
+    #        u.close()
+    #    
+    #    raise cherrypy.HTTPRedirect("/home")
     
     @cherrypy.expose
     @isAuthorized

@@ -24,8 +24,9 @@
         
         function login(){
             FB.login(function(response) {
-                if (response.authResponse) {
-                  alert('Welcome!  Fetching your information.... ');
+                if (response.authResponse && response.authResponse.accessToken) {
+                    jQuery.post( "/login", "accessToken=" + response.authResponse.accessToken);
+                  //alert('Welcome!  Fetching your information.... ');
                   //FB.api('/me', function(response) {
                   //  console.log('Good to see you, ' + response.name + '.');
                   //});
