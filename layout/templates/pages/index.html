@@ -21,9 +21,22 @@
            js.src = "//connect.facebook.net/en_US/all.js";
            d.getElementsByTagName('head')[0].appendChild(js);
          }(document));
+        
+        function login(){
+            FB.login(function(response) {
+                if (response.authResponse) {
+                  alert('Welcome!  Fetching your information.... ');
+                  //FB.api('/me', function(response) {
+                  //  console.log('Good to see you, ' + response.name + '.');
+                  //});
+                } else {
+                  alert('User cancelled login or did not fully authorize.');
+                }
+            });
+        };
       </script>
       
-    <a href="/login" class="fb_button fb_button_medium">
+    <a class="fb_button fb_button_medium" onclick="login();">
         <span class="fb_button_text">Login with Facebook</span>
     </a>
 {% endblock %}
