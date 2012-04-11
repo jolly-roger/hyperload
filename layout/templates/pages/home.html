@@ -23,22 +23,25 @@
 	$(function() {
         $.getJSON('/getresources', function(data) {
             for(var i = 0; i < data.length; i ++){
-                var isVerified = Boolean(data[i][3]);
-                var resourceHtml = "<tr>" +
-                    "<td>" + data[i][1] + "</td>" + 
-                    "<td>" + data[i][2] + "</td>";
-                    
-                if(isVerified){
-                    resourceHtml += "<td>" + Verified + "</td>" +
-                        "</tr>";
-                }else{
-                    resourceHtml += "<td><button id=\"resource_" + data[i][0] + "\">Verify</button></td>" +
-                        "</tr>";
-                };
-                
-                $("#resources tbody").append(resourceHtml); 
+                addResource(data[i][0], data[i][1], data[i][2], Boolean(data[i][3]));
             };
         });
+        
+        function addResource(id, alias, domain, isVerified){
+            var resourceHtml = "<tr>" +
+                "<td>" + alias + "</td>" + 
+                "<td>" + domain + "</td>";
+                
+            if(isVerified){
+                resourceHtml += "<td>" + Verified + "</td>" +
+                    "</tr>";
+            }else{
+                resourceHtml += "<td><button id=\"resource_" + id + "\">Verify</button></td>" +
+                    "</tr>";
+            };
+            
+            $("#resources tbody").append(resourceHtml); 
+        };
         
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
@@ -98,14 +101,10 @@
 					//bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
 
 					if ( bValid ) {
-                        $.post("/addresource", {alias: alias.val(), domain: domain.val()} );
-                        
-						$( "#resources tbody" ).append( "<tr>" +
-							"<td>" + alias.val() + "</td>" + 
-							"<td>" + domain.val() + "</td>" + 
-							"<td>" + "</td>" +
-						"</tr>" ); 
-						$( this ).dialog( "close" );
+                        $.post("/addresource", {alias: alias.val(), domain: domain.val()}, function(id){
+                            addResource(id, alias.val(), domain.val(), false);
+                        });
+                        $( this ).dialog( "close" );
 					}
 				},
 				Cancel: function() {
