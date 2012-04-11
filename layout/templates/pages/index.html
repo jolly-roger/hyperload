@@ -26,7 +26,7 @@
             FB.login(function(response) {
                 if (response.authResponse && response.authResponse.accessToken &&
                     response.authResponse.userID) {
-                    jQuery.post( "/login", "accessToken=" + response.authResponse.accessToken +
+                    jQuery.post( "/auth/login", "accessToken=" + response.authResponse.accessToken +
                         "&userID=" + response.authResponse.userID, function(data){
                             if(data){
                                 window.location = data;

@@ -33,5 +33,5 @@ class resources(object):
         
     @cherrypy.expose
     @isAuthorized
-    def verify(self):
+    def verify(self, resourceId):
         pass
