@@ -55,7 +55,7 @@ class hyperload(object):
         if alias is not None and not alias == "" and domain is not None and not domain == "":
             r = dal.resource.resource()
             #resourceId =
-            r.add(alias, domain, facebook.user.getUserId())
+            #r.add(alias, domain, facebook.user.getUserId())
             r.close()
             
             #cherrypy.log.error(str(resourceId))
