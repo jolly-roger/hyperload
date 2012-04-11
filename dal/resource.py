@@ -14,7 +14,7 @@ class resource(base.base):
         self.conn.commit()
         result = self.cur.fetchall()
         
-        cherrypy.log.error(str(result[0]))
+        cherrypy.log.error(str(result[0][0]))
         
         return result
         
