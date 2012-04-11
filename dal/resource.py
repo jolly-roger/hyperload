@@ -12,10 +12,9 @@ class resource(base.base):
         self.cur.execute(constants.ADD_RESOURCE, {"resourcealias": alias, "resourcedomain": domain,
             "outeruserid": outerUserId})
         self.conn.commit()
-        #result =
-        #self.cur.fetchall()
+        result = self.cur.fetchall()
         
-        #return result[0][0]
+        return result[0][0]
         
         
         #self.cur.callproc('reffunc', ['curname'])
