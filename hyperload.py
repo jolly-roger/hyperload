@@ -48,7 +48,7 @@ class hyperload(object):
         return "/home"
     
     @cherrypy.expose
-    @isAuthorized
+    #@isAuthorized
     def addresource(self, alias=None, domain=None):
         #resourceId = -1
         
