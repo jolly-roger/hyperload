@@ -26,7 +26,9 @@ class hyperload(object):
         
     @cherrypy.expose
     def js(self):
-        return ""
+        js = open(constants.BASE_DIR + "js/common.js", "r").read()
+        
+        return js
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")

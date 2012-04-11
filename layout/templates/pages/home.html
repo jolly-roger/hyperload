@@ -21,33 +21,13 @@
     
 	<script>
 	$(function() {
-        $("#logoutBtn").click(function(){
-            $.get("/auth/logout", function(data){
-                window.location = data;
-            });
-        });
+        $("#logoutBtn").click(logout);
         
         $.getJSON('/resources/get', function(data) {
             for(var i = 0; i < data.length; i ++){
                 addResource(data[i][0], data[i][1], data[i][2], Boolean(data[i][3]));
             };
         });
-        
-        function addResource(id, alias, domain, isVerified){
-            var resourceHtml = "<tr>" +
-                "<td>" + alias + "</td>" + 
-                "<td>" + domain + "</td>";
-                
-            if(isVerified){
-                resourceHtml += "<td>" + Verified + "</td>" +
-                    "</tr>";
-            }else{
-                resourceHtml += "<td><button id=\"resource_" + id + "\">Verify</button></td>" +
-                    "</tr>";
-            };
-            
-            $("#resources tbody").append(resourceHtml); 
-        };
         
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );

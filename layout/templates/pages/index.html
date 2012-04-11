@@ -22,24 +22,12 @@
            d.getElementsByTagName('head')[0].appendChild(js);
          }(document));
         
-        function login(){
-            FB.login(function(response) {
-                if (response.authResponse && response.authResponse.accessToken &&
-                    response.authResponse.userID) {
-                    jQuery.post( "/auth/login", "accessToken=" + response.authResponse.accessToken +
-                        "&userID=" + response.authResponse.userID, function(data){
-                            if(data){
-                                window.location = data;
-                            }
-                    });
-                } else {
-                  alert('User cancelled login or did not fully authorize.');
-                }
-            });
-        };
+        $(function() {
+            $("#loginBtn").click(login);
+        });
       </script>
       
-    <a class="fb_button fb_button_medium" onclick="login();">
+    <a id="loginBtn" class="fb_button fb_button_medium">
         <span class="fb_button_text">Login with Facebook</span>
     </a>
 {% endblock %}
