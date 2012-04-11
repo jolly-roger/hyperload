@@ -1,13 +1,10 @@
 import cherrypy
 import os.path
 import constants
-import json
-import urllib.request
 
 from isAuthorized import isAuthorized
 
 from facebook import authorization
-from facebook import authentication
 from facebook import constants as facebookConstatns
 
 import facebook.user
@@ -15,10 +12,14 @@ import facebook.user
 from layout import layout
 
 import dal.user
-import dal.resource
+
+import resources
 
 
 class hyperload(object):
+    resources = resources.resources()
+    
+    
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):
         return layout.getIndex()
@@ -33,7 +34,7 @@ class hyperload(object):
         authorization.checkAuthorization()
         facebook.user.unloadUser()
         
-        raise cherrypy.HTTPRedirect("/")
+        return "/"
         
     @cherrypy.expose
     def login(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
@@ -46,32 +47,6 @@ class hyperload(object):
             u.close()
             
         return "/home"
-
-    @cherrypy.expose
-    #@isAuthorized
-    def addresource(self, alias=None, domain=None):
-        resourceId = -1
-        
-        if alias is not None and not alias == "" and domain is not None and not domain == "":
-            r = dal.resource.resource()
-            resourceId = r.add(alias, domain, facebook.user.getUserId())
-            r.close()
-
-        return str(resourceId)
-            
-    @cherrypy.expose
-    @isAuthorized
-    def getresources(self):
-        r = dal.resource.resource()
-        resources = r.get(facebook.user.getUserId())
-        r.close()
-        
-        return  json.dumps(resources)
-        
-    @cherrypy.expose
-    @isAuthorized
-    def verifyresource(self):
-        pass
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")

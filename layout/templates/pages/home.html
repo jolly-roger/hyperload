@@ -4,7 +4,7 @@
 {% endblock%}
 
 {% block mainContent %}
-    <a href="/logout">logout</a>
+    <a id="logoutBtn">logout</a>
     Wellcome!!!
     
     <style>
@@ -21,7 +21,13 @@
     
 	<script>
 	$(function() {
-        $.getJSON('/getresources', function(data) {
+        $("#logoutBtn").click(function(){
+            $.get("/logout", function(data){
+                window.location = data;
+            });
+        });
+        
+        $.getJSON('/resources/get', function(data) {
             for(var i = 0; i < data.length; i ++){
                 addResource(data[i][0], data[i][1], data[i][2], Boolean(data[i][3]));
             };
@@ -104,7 +110,7 @@
                         var aliasVal = alias.val();
                         var domainVal = domain.val();
                         
-                        $.post("/addresource", {alias: alias.val(), domain: domain.val()}, function(id){
+                        $.post("/resources/add", {alias: aliasVal, domain: domainVal}, function(id){
                                 addResource(id, aliasVal, domainVal, false);
                         });
                         $( this ).dialog( "close" );
