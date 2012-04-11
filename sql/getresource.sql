@@ -4,7 +4,7 @@ AS $BODY$
 BEGIN
     return query select r.*
         from resource as r
-        where t.id_resource = resourceid;
+        where r.id_resource = resourceid;
 END;
 $BODY$
   LANGUAGE plpgsql;
