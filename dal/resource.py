@@ -16,9 +16,6 @@ class resource(base.base):
         
         return result[0][0]
         
-        
-        #self.cur.callproc('reffunc', ['curname'])
-        
     def get(self, outerUserId):
         self.cur.execute(constants.GET_RESOURCES, {"outeruserid": outerUserId})
         
