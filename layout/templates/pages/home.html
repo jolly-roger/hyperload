@@ -102,11 +102,11 @@
 
 					if ( bValid ) {
                         $.post("/addresource", {alias: alias.val(), domain: domain.val()}, function(id){
-                            //(function(){
+                            (function(){
                                 var aliasVal = String(alias.val());
                                 var domainVal = String(domain.val());
                                 addResource(id, aliasVal, domainVal, false);
-                            //})();
+                            })();
                         });
                         $( this ).dialog( "close" );
 					}
