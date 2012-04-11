@@ -13,7 +13,7 @@ class resource(base.base):
             "outeruserid": outerUserId})
         self.conn.commit()
 
-        return self.cur.fetchall()[0][0]
+        return self.cur.fetchall()[0]
         
     def get(self, outerUserId):
         self.cur.execute(constants.GET_RESOURCES, {"outeruserid": outerUserId})
