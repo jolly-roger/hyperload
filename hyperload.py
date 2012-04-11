@@ -59,7 +59,7 @@ class hyperload(object):
             
             cherrypy.log.error(str(resourceId))
             
-        return str(resourceId)
+        #return str(resourceId)
             
     @cherrypy.expose
     @isAuthorized
