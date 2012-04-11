@@ -48,7 +48,9 @@ class hyperload(object):
         return "/home"
     
     
-    
+    @cherrypy.expose
+    def test(self):
+        return "Test"
     
     
     @cherrypy.expose
