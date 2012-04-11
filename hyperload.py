@@ -59,7 +59,7 @@ class hyperload(object):
 
         #return resourceId
         
-        return ""
+        return "Test"
             
     @cherrypy.expose
     @isAuthorized
