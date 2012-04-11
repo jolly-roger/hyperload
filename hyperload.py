@@ -53,7 +53,7 @@ class hyperload(object):
     
     @cherrypy.expose
     #@isAuthorized
-    def addresource(self, alias=None, domain=None):
+    def addresource(self): #, alias=None, domain=None):
         #resourceId = -1
         
         #if alias is not None and not alias == "" and domain is not None and not domain == "":
