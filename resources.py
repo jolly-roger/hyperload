@@ -38,9 +38,8 @@ class resources(object):
     
     @cherrypy.expose
     @isAuthorized
-    def getverificationfile(self, resourceId, fileName):
-        cherrypy.response.headers['Content-Type'] = "application/x-download"
-        cherrypy.response.headers['Content-Disposition'] = "attachment; filename=hyperload.txt"
+    def getverificationfile(self, resourceId):
+        cherrypy.response.headers['Content-Disposition'] = "attachment"
         
         r = dal.resource.resource()
         resource = r.get(resourceId)
