@@ -57,7 +57,9 @@ class hyperload(object):
             resourceId = r.add(alias, domain, facebook.user.getUserId())
             r.close()
 
-        return resourceId
+        #return resourceId
+        
+        return ""
             
     @cherrypy.expose
     @isAuthorized
