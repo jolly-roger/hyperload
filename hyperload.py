@@ -47,6 +47,10 @@ class hyperload(object):
             
         return "/home"
     
+    
+    
+    
+    
     @cherrypy.expose
     #@isAuthorized
     def addresource(self, alias=None, domain=None):
@@ -58,11 +62,13 @@ class hyperload(object):
             #r.add(alias, domain, facebook.user.getUserId())
             #r.close()
             
-            pass
+            #pass
             
             #cherrypy.log.error(str(resourceId))
             
         #return str(resourceId)
+        
+        return ""
             
     @cherrypy.expose
     @isAuthorized
