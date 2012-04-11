@@ -13,7 +13,7 @@ class resource(base.base):
             "outeruserid": outerUserId})
         #self.conn.commit()
         #result =
-        self.cur.fetchall()
+        #self.cur.fetchall()
         
         #return result[0][0]
         
