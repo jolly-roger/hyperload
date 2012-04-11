@@ -23,7 +23,7 @@
 	$(function() {
         $("#logoutBtn").click(logout);
         
-        $.getJSON('/resources/get', function(data) {
+        $.getJSON('/resources/getuserall', function(data) {
             for(var i = 0; i < data.length; i ++){
                 addResource(data[i][0], data[i][1], data[i][2], Boolean(data[i][3]));
             };
@@ -67,7 +67,7 @@
 			}
 		}
 		
-		$( "#resource-form" ).dialog({
+		$( "#add-resource-form" ).dialog({
 			autoOpen: false,
 			height: 400,
 			width: 450,
@@ -108,7 +108,7 @@
 		$( "#add-resource" )
 			.button()
 			.click(function() {
-				$( "#resource-form" ).dialog( "open" );
+				$( "#add-resource-form" ).dialog( "open" );
 			});
 	});
 	</script>

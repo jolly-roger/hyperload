@@ -16,7 +16,12 @@ class resource(base.base):
         
         return result[0][0]
         
-    def get(self, outerUserId):
+    def getuserall(self, outerUserId):
         self.cur.execute(constants.GET_RESOURCES, {"outeruserid": outerUserId})
+        
+        return self.cur.fetchall()
+        
+    def get(self, resourceId):
+        sefl.cur.callproc("getresource", [resourceId])
         
         return self.cur.fetchall()

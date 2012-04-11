@@ -24,9 +24,9 @@ class resources(object):
             
     @cherrypy.expose
     @isAuthorized
-    def get(self):
+    def getuserall(self):
         r = dal.resource.resource()
-        resources = r.get(facebook.user.getUserId())
+        resources = r.getuserall(facebook.user.getUserId())
         r.close()
         
         return  json.dumps(resources)
@@ -35,3 +35,15 @@ class resources(object):
     @isAuthorized
     def verify(self, resourceId):
         pass
+    
+    @cherrypy.expose
+    @isAuthorized
+    def getverificationfile(self, resourceId):
+        cherrypy.response.headers['Content-Type'] = "text/plain"
+        cherrypy.response.headers['Content-Disposition'] = "attachment; filename=hyperload.txt"
+        
+        r = dal.resource.resource()
+        resource = r.get(resourceId)
+        r.close()
+        
+        return resource[0][4]

@@ -26,6 +26,8 @@ class hyperload(object):
         
     @cherrypy.expose
     def js(self):
+        cherrypy.response.headers['Content-Type'] = "text/javascript"
+        
         js = open(constants.BASE_DIR + "js/common.js", "r").read()
         
         return js
