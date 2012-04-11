@@ -101,12 +101,11 @@
 					//bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
 
 					if ( bValid ) {
+                        var aliasVal = alias.val();
+                        var domainVal = domain.val();
+                        
                         $.post("/addresource", {alias: alias.val(), domain: domain.val()}, function(id){
-                            (function(){
-                                var aliasVal = String(alias.val());
-                                var domainVal = String(domain.val());
                                 addResource(id, aliasVal, domainVal, false);
-                            })();
                         });
                         $( this ).dialog( "close" );
 					}
