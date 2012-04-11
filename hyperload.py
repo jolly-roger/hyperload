@@ -57,6 +57,8 @@ class hyperload(object):
             resourceId = r.add(alias, domain, facebook.user.getUserId())
             r.close()
             
+            cherrypy.log.error(str(resourceId))
+            
         return str(resourceId)
             
     @cherrypy.expose
