@@ -9,8 +9,8 @@ class resource(base.base):
         base.base.__init__(self)
     
     def add(self, alias, domain, outerUserId):
-        self.cur.execute(constants.ADD_RESOURCE, {"resourcealias": alias, "resourcedomain": domain,
-            "outeruserid": outerUserId})
+        #self.cur.execute(constants.ADD_RESOURCE, {"resourcealias": alias, "resourcedomain": domain,
+        #    "outeruserid": outerUserId})
         #self.conn.commit()
         #result =
         #self.cur.fetchall()
@@ -18,7 +18,7 @@ class resource(base.base):
         #return result[0][0]
         
         
-        #self.cur.callproc('reffunc', ['curname'])
+        self.cur.callproc("addresource", [alias, domain, outerUserId])
         
     def get(self, outerUserId):
         self.cur.execute(constants.GET_RESOURCES, {"outeruserid": outerUserId})
