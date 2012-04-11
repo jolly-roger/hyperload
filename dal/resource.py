@@ -12,8 +12,11 @@ class resource(base.base):
         self.cur.execute(constants.ADD_RESOURCE, {"resourcealias": alias, "resourcedomain": domain,
             "outeruserid": outerUserId})
         self.conn.commit()
-
-        return self.cur.fetchall()
+        result = self.cur.fetchall()
+        
+        cherrypy.log.error(str(result))
+        
+        return result
         
     def get(self, outerUserId):
         self.cur.execute(constants.GET_RESOURCES, {"outeruserid": outerUserId})
