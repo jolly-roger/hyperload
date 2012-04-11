@@ -22,6 +22,6 @@ class resource(base.base):
         return self.cur.fetchall()
         
     def get(self, resourceId):
-        sefl.cur.callproc("getresource", [resourceId])
+        self.cur.callproc("getresource", [resourceId])
         
         return self.cur.fetchall()
