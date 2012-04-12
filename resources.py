@@ -49,4 +49,4 @@ class resources(object):
         
     @cherrypy.expose
     def test(self):
-        cherrypy.log.error(str(cherrypy.Application.config["database"]))
+        cherrypy.log.error(str(cherrypy.Application.config.get("database")))
