@@ -17,7 +17,7 @@ function addResource(id, alias, domain, isVerified){
             "<p class=\"validateTips\">In order to verify you web resource download and place verification " +
             "file in root folder of your resource or place following meta tag into your main page.</p>" +
             "<a href=\"/resources/getverificationfile/40\">Download verification file</a>" +
-            "</div>")..dialog({
+            "</div>").dialog({
 			autoOpen: false,
 			height: 400,
 			width: 450,
