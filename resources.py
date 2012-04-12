@@ -46,3 +46,7 @@ class resources(object):
         r.close()
         
         return resource[0][4]
+        
+    @cherrypy.expose
+    def test(self):
+        cherrypy.log.error(str(cherrypy.Application.config))
