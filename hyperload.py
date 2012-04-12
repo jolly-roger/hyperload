@@ -31,6 +31,11 @@ class hyperload(object):
         js = open(constants.BASE_DIR + "js/common.js", "r").read()
         
         return js
+    
+    @cherrypy.expose
+    def test(self):
+        cherrypy.log.error(str(self.config.get("database")))
+        cherrypy.log.error(str(cherrypy.request.app.config["database"]))
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")
