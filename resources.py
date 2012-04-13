@@ -51,5 +51,5 @@ class resources(object):
     @isAuthorized
     def remove(self, resourceId):
         r = dal.resource.resource()
-        resource = r.remove(resourceId)
+        r.remove(resourceId)
         r.close()
