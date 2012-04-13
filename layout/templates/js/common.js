@@ -7,11 +7,10 @@ function addResource(id, alias, domain, isVerified){
         resourceHtml += "<td>" + Verified + "</td>" +
             "</tr>";
     }else{
-        resourceHtml += "<td><button id=\"verify_resource_" + id + "\">Verify</button></td>" +
-            "</tr>";
+        resourceHtml += "<td><button id=\"verify_resource_" + id + "\">Verify</button></td>";
     };
 	
-	resourceHtml += "<td><button id=\"remove_resource_" + id + "\">Remove</button></td>";
+	resourceHtml += "<td><button id=\"remove_resource_" + id + "\">Remove</button></td></tr>";
     
     $("#resources tbody").append(resourceHtml);
     $("#verify_resource_" + id).button().click(function() {
