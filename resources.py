@@ -34,7 +34,9 @@ class resources(object):
     @cherrypy.expose
     @isAuthorized
     def verify(self, resourceId):
-        pass
+        r = dal.resource.resource()
+        r.verify(resourceId)
+        r.close()
     
     @cherrypy.expose
     @isAuthorized

@@ -21,6 +21,7 @@ function addResource(id, alias, domain, isVerified){
 			modal: true,
 			buttons: {
 				"Verify": function() {
+					$.get("/resources/verify/" + id);
                     $( this ).dialog( "close" );
 				},
 				Cancel: function() {
