@@ -31,11 +31,6 @@
         
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		
-		var alias = $("#alias");
-		var domain = $("#domain");
-		var allFields = $([]).add(alias).add(domain);
-		var tips = $(".validateTips");
 
 		function updateTips( t ) {
 			tips
@@ -74,6 +69,11 @@
 			modal: true,
 			buttons: {
 				"Add": function() {
+                    var alias = $("#alias");
+                    var domain = $("#domain");
+                    var allFields = $([]).add(alias).add(domain);
+                    var tips = $(".validateTips");
+                    
 					var bValid = true;
 					allFields.removeClass( "ui-state-error" );
 
