@@ -27,9 +27,7 @@ class hyperload(object):
     def js(self):
         cherrypy.response.headers['Content-Type'] = "text/javascript"
         
-        js = open(cherrypy.request.app.config["hyperload"]["base_dir"] + "js/common.js", "r").read()
-        
-        return js
+        return layout.getJS()
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")

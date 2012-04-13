@@ -28,3 +28,7 @@ def getLogin():
 def getHome():
     tmpl = getenv().get_template("pages/home.html")
     return tmpl.render()
+
+def getJS():
+    tmpl = getenv().get_template("js/common.js")
+    return tmpl.render()
