@@ -66,8 +66,8 @@
 				return true;
 			}
 		}
-		
-		$( "#add-resource-form" ).dialog({
+
+		var addResourceDlg = $('{% include "dialogs/addresource.html"%}').dialog({
 			autoOpen: false,
 			height: 400,
 			width: 450,
@@ -104,16 +104,12 @@
 				allFields.val( "" ).removeClass( "ui-state-error" );
 			}
 		});
-
-		$( "#add-resource" )
-			.button()
-			.click(function() {
-				$( "#add-resource-form" ).dialog( "open" );
-			});
+        
+        $("#add-resource").button().click(function() {
+            addResourceDlg.dialog("open");
+        });
 	});
 	</script>
-
-{% include "dialogs/addresource.html"%}
 
 <div id="resources-container" class="ui-widget">
 	<h1>Resources:</h1>
