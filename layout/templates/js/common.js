@@ -4,9 +4,10 @@ function addResource(id, alias, domain, isVerified){
         "<td>" + domain + "</td>";
         
     if(isVerified){
-        resourceHtml += "<td>Verified</td>";
+        resourceHtml += "<td id=\"is-verified-resource" + id + "\">Verified</td>";
     }else{
-        resourceHtml += "<td><button id=\"verify_resource_" + id + "\">Verify</button></td>";
+        resourceHtml += "<td id=\"is-verified-resource" + id + "\">" +
+			"<button id=\"verify_resource_" + id + "\">Verify</button></td>";
     };
 	
 	resourceHtml += "<td><button id=\"remove_resource_" + id + "\">Remove</button></td></tr>";
@@ -21,6 +22,7 @@ function addResource(id, alias, domain, isVerified){
 			buttons: {
 				"Verify": function() {
 					$.get("/resources/verify/" + id);
+					$("#is-verified-resource" + id).html("Verified");
                     $( this ).dialog( "close" );
 				},
 				Cancel: function() {
