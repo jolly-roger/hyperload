@@ -4,7 +4,7 @@ function addResource(id, alias, domain, isVerified){
         "<td>" + domain + "</td>";
         
     if(isVerified){
-        resourceHtml += "<td>" + Verified + "</td>" +
+        resourceHtml += "<td>Verified</td>" +
             "</tr>";
     }else{
         resourceHtml += "<td><button id=\"verify_resource_" + id + "\">Verify</button></td>";
