@@ -5,8 +5,10 @@ from jinja2 import Environment, FileSystemLoader
 from facebook import constants as facebookConstatns
 
 
+env
+
+
 def getenv():
-    global env
     if not env:
         env = Environment(loader = FileSystemLoader(cherrypy.request.app.config["hyperload"]["base_dir"] + \
             "layout/templates"))
