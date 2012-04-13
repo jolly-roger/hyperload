@@ -13,11 +13,7 @@ function addResource(id, alias, domain, isVerified){
     
     $("#resources tbody").append(resourceHtml);
     $("#resource_" + id).button().click(function() {
-        $("<div id=\"verify-resource-form\" title=\"Verify resource\">" +
-            "<p class=\"validateTips\">In order to verify you web resource download and place verification " +
-            "file in root folder of your resource or place following meta tag into your main page.</p>" +
-            "<a href=\"/resources/getverificationfile/40\">Download verification file</a>" +
-            "</div>").dialog({
+        $('{% include "dialogs/verifyresource.html"%}').dialog({
 			autoOpen: false,
 			height: 400,
 			width: 450,
