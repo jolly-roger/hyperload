@@ -27,3 +27,4 @@ class resource(base.base):
         
     def remove(self, resourceId):
         self.cur.callproc("removeresource", [resourceId])
+        self.conn.commit()
