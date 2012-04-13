@@ -1,12 +1,12 @@
 import cherrypy
-import constants
 
 from jinja2 import Environment, FileSystemLoader
 
 from facebook import constants as facebookConstatns
 
 
-env = Environment(loader = FileSystemLoader(constants.BASE_DIR + "layout/templates"))
+env = Environment(loader = FileSystemLoader(cherrypy.request.app.config["hyperload"]["base_dir"] + \
+    "layout/templates"))
 
 
 def getIndex():

@@ -1,5 +1,3 @@
-DB_CONNECTION = 'dbname=hyperload user=hyperload password=77^f=nN*'
-
 GET_TODOS = "select * from gettodos(%(userid)s, %(statusid)s, %(isowner)s, %(excludestatus)s, %(isshared)s, %(excludeisshared)s);"
 
 ADD_TODO = "select addtodo(%(todoname)s, %(userid)s);"
