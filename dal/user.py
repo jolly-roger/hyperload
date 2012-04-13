@@ -6,5 +6,5 @@ class user(base.base):
         base.base.__init__(self)
     
     def addFbUser(self, fbUserId):
-        self.cur.execute(constants.ADD_FB_USER, {"fbuserid": fbUserId})
+        self.cur.callproc("addfbuser", [fbUserId])
         self.conn.commit()

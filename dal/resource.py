@@ -9,15 +9,14 @@ class resource(base.base):
         base.base.__init__(self)
     
     def add(self, alias, domain, outerUserId):
-        self.cur.execute(constants.ADD_RESOURCE, {"resourcealias": alias, "resourcedomain": domain,
-            "outeruserid": outerUserId})
+        self.cur.callproc("addresource", [alias, domain, outerUserId])
         self.conn.commit()
         result = self.cur.fetchall()
         
         return result[0][0]
         
     def getuserall(self, outerUserId):
-        self.cur.execute(constants.GET_RESOURCES, {"outeruserid": outerUserId})
+        self.cur.callproc("getresources", [outerUserId])
         
         return self.cur.fetchall()
         
