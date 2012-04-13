@@ -6,7 +6,7 @@ BEGIN
         from resource as r
         inner join user_resource as ur
             on r.id_resource = ur.resource_id
-        where ur.user_id = (select * from getuserid(outeruserid));
+        where ur.user_id = (select * from getuserid(outeruserid)) and r.is_removed = false;
 END;
 $BODY$
   LANGUAGE plpgsql;

@@ -24,3 +24,6 @@ class resource(base.base):
         self.cur.callproc("getresource", [resourceId])
         
         return self.cur.fetchall()
+        
+    def remove(self, resourceId):
+        self.cur.callproc("removeresource", [resourceId])

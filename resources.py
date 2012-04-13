@@ -46,3 +46,10 @@ class resources(object):
         r.close()
         
         return resource[0][4]
+        
+    @cherrypy.expose
+    @isAuthorized
+    def remove(self, resourceId):
+        r = dal.resource.resource()
+        resource = r.remove(resourceId)
+        r.close()

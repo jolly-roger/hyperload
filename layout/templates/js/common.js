@@ -7,12 +7,14 @@ function addResource(id, alias, domain, isVerified){
         resourceHtml += "<td>" + Verified + "</td>" +
             "</tr>";
     }else{
-        resourceHtml += "<td><button id=\"resource_" + id + "\">Verify</button></td>" +
+        resourceHtml += "<td><button id=\"verify_resource_" + id + "\">Verify</button></td>" +
             "</tr>";
     };
+	
+	resourceHtml += "<td><button id=\"remove_resource_" + id + "\">Remove</button></td>";
     
     $("#resources tbody").append(resourceHtml);
-    $("#resource_" + id).button().click(function() {
+    $("#verify_resource_" + id).button().click(function() {
         $('{% include "dialogs/verifyresource.html"%}').dialog({
 			autoOpen: false,
 			height: 400,
@@ -27,6 +29,9 @@ function addResource(id, alias, domain, isVerified){
 				}
 			}
 		}).dialog( "open" );
+	});
+	$("#remove_resource_" + id).button().click(function(){
+		$.get("/resources/remove/" + id);
 	});
 };
 
