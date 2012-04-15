@@ -26,7 +26,7 @@ function addResource(id, alias, domain, isVerified){
 					var self = this;
 					
 					$.get("/resources/verify/" + id, function(data){
-						if(Boolean(data)){
+						if(Boolean(Number(data))){
 							$("#is-verified-resource_" + id).html("Verified");
 							$(self).dialog( "close" );
 						}else{
