@@ -4,9 +4,9 @@ function addResource(id, alias, domain, isVerified){
         "<td>" + domain + "</td>";
         
     if(isVerified){
-        resourceHtml += "<td id=\"is-verified-resource" + id + "\">Verified</td>";
+        resourceHtml += "<td id=\"is-verified-resource_" + id + "\">Verified</td>";
     }else{
-        resourceHtml += "<td id=\"is-verified-resource" + id + "\">" +
+        resourceHtml += "<td id=\"is-verified-resource_" + id + "\">" +
 			"<button id=\"verify_resource_" + id + "\">Verify</button></td>";
     };
 	
@@ -14,7 +14,9 @@ function addResource(id, alias, domain, isVerified){
     
     $("#resources tbody").append(resourceHtml);
     $("#verify_resource_" + id).button().click(function() {
-        $('{% include "dialogs/verifyresource.html"%}').dialog({
+        var verifyDialog = $('{% include "dialogs/verifyresource.html"%}');
+		verifyDialog..children("#verificationFileLnk").attr("href", "/resources/getverificationfile/" + id);
+		verifyDialog.dialog({
 			autoOpen: false,
 			height: 400,
 			width: 450,
@@ -23,7 +25,7 @@ function addResource(id, alias, domain, isVerified){
 				"Verify": function() {
 					$.get("/resources/verify/" + id, function(data){
 						if(data){
-							$("#is-verified-resource" + id).html("Verified");
+							$("#is-verified-resource_" + id).html("Verified");
 							$( this ).dialog( "close" );
 						}else{
 							alert("Cannot verify");
