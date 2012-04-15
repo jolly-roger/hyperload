@@ -24,7 +24,7 @@ function addResource(id, alias, domain, isVerified){
 			buttons: {
 				"Verify": function() {
 					$.get("/resources/verify/" + id, function(data){
-						if(data){
+						if(Boolean(data)){
 							$("#is-verified-resource_" + id).html("Verified");
 							$( this ).dialog( "close" );
 						}else{
