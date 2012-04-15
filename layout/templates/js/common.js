@@ -23,10 +23,12 @@ function addResource(id, alias, domain, isVerified){
 			modal: true,
 			buttons: {
 				"Verify": function() {
+					var self = this;
+					
 					$.get("/resources/verify/" + id, function(data){
 						if(Boolean(data)){
 							$("#is-verified-resource_" + id).html("Verified");
-							$( this ).dialog( "close" );
+							$(self).dialog( "close" );
 						}else{
 							alert("Cannot verify");
 						}
