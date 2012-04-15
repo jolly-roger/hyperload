@@ -38,7 +38,7 @@ class resources(object):
         r = dal.resource.resource()
         resource = r.get(int(resourceId))
         
-        verificationData = str(urllib.request.urlopen(resource[0][2] + "\hyperload.txt").read(), encoding="utf-8")
+        verificationData = str(urllib.request.urlopen(resource[0][2] + "/hyperload.txt").read(), encoding="utf-8")
         
         if verificationData == resource[0][4]:
             r.verify(resourceId)
