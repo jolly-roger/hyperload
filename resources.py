@@ -47,9 +47,9 @@ class resources(object):
         r.close()
         
         if isVerified:
-            return 1
+            return str(1)
         else:
-            return 0
+            return str(0)
     
     @cherrypy.expose
     @isAuthorized
