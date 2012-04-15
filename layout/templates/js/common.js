@@ -15,7 +15,7 @@ function addResource(id, alias, domain, isVerified){
     $("#resources tbody").append(resourceHtml);
     $("#verify_resource_" + id).button().click(function() {
         var verifyDialog = $('{% include "dialogs/verifyresource.html"%}');
-		verifyDialog..children("#verificationFileLnk").attr("href", "/resources/getverificationfile/" + id);
+		verifyDialog.children("#verificationFileLnk").attr("href", "/resources/getverificationfile/" + id);
 		verifyDialog.dialog({
 			autoOpen: false,
 			height: 400,
