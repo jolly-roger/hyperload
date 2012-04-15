@@ -1,6 +1,6 @@
 import cherrypy
 import json
-
+import urllib.request
 
 import dal.resource
 import facebook.user
@@ -34,9 +34,19 @@ class resources(object):
     @cherrypy.expose
     @isAuthorized
     def verify(self, resourceId):
+        isVerified = False
         r = dal.resource.resource()
-        r.verify(resourceId)
+        resource = r.get(resourceId)
+        
+        verificationData = str(urllib.request.urlopen(resource[0][2] + "\hyperload.txt").read(), encoding="utf-8")
+        
+        if verificationData == resource[0][4]:
+            r.verify(resourceId)
+            isVerified = True
+            
         r.close()
+        
+        return isVerified
     
     @cherrypy.expose
     @isAuthorized

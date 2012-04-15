@@ -21,9 +21,14 @@ function addResource(id, alias, domain, isVerified){
 			modal: true,
 			buttons: {
 				"Verify": function() {
-					$.get("/resources/verify/" + id);
-					$("#is-verified-resource" + id).html("Verified");
-                    $( this ).dialog( "close" );
+					$.get("/resources/verify/" + id, function(data){
+						if(data){
+							$("#is-verified-resource" + id).html("Verified");
+							$( this ).dialog( "close" );
+						}else{
+							alert("Cannot verify");
+						}
+					});
 				},
 				Cancel: function() {
 					$(this).dialog("close");
