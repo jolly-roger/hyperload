@@ -36,7 +36,7 @@ class resources(object):
     def verify(self, resourceId):
         isVerified = False
         r = dal.resource.resource()
-        resource = r.get(resourceId)
+        resource = r.get(int(resourceId))
         
         verificationData = str(urllib.request.urlopen(resource[0][2] + "\hyperload.txt").read(), encoding="utf-8")
         
@@ -54,7 +54,7 @@ class resources(object):
         cherrypy.response.headers['Content-Disposition'] = "attachment; filename=hyperload.txt"
         
         r = dal.resource.resource()
-        resource = r.get(resourceId)
+        resource = r.get(int(resourceId))
         r.close()
         
         return resource[0][4]
