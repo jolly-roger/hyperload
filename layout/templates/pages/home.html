@@ -28,15 +28,9 @@
                 addResource(data[i][0], data[i][1], data[i][2], Boolean(data[i][3]));
             };
         });
-        
-		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
-		$( "#dialog:ui-dialog" ).dialog( "destroy" );
 
 		function updateTips( t ) {
-            $(".validateTips").text( t );//.addClass( "ui-state-highlight" );
-			//setTimeout(function() {
-			//	tips.removeClass( "ui-state-highlight", 1500 );
-			//}, 500 );
+            $(".validateTips").text( t ).addClass( "ui-state-error" );
 		}
 
 		function checkLength( o, n, min, max ) {
@@ -60,7 +54,6 @@
 			}
 		}
 
-        var allFields = $([]);        
         $("#add-resource").button().click(function() {
             $('{% include "dialogs/addresource.html"%}').dialog({
                 autoOpen: false,
@@ -71,10 +64,9 @@
                     "Add": function() {
                         var alias = $("#alias");
                         var domain = $("#domain");
-                        
-                        allFields.add(alias).add(domain);
-                        
+                        var allFields = $([]).add(alias).add(domain);
                         var bValid = true;
+                        
                         allFields.removeClass( "ui-state-error" );
                         
                         bValid = bValid && checkRegexp(domain, /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}$/,
@@ -93,9 +85,6 @@
                     Cancel: function() {
                         $( this ).dialog( "close" );
                     }
-                },
-                close: function() {
-                    allFields.val( "" ).removeClass( "ui-state-error" );
                 }
             }).dialog("open");
         });
