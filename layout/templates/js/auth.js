@@ -1,4 +1,4 @@
-if(!hyperload){
+if(typeof(hyperload) == "undefined"){
     hyperload = {};
 };
 
