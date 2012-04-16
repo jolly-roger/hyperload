@@ -1,5 +1,5 @@
 import cherrypy
-
+import urllib.request
 
 import facebook.user
 from facebook import authorization
@@ -35,6 +35,12 @@ class auth(object):
     def ggllogin(self, accessToken = None):#, userID = None):
         if accessToken is not None:
             cherrypy.session[facebookConstants.GOOGLE_ACCESS_TOKEN] = accessToken
+            
+            cherrypy.log.error(
+                urllib.request.urlopen("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + accessToken).
+                read())
+            
+            
             #facebook.user.loadUser(userID, loginTypes.Google)
             
             #u = dal.user.user()
