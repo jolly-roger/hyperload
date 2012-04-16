@@ -32,10 +32,10 @@ class auth(object):
         return "/home"
     
     @cherrypy.expose
-    def ggllogin(self, accessToken = None, userID = None):
+    def ggllogin(self, accessToken = None):#, userID = None):
         if accessToken is not None:
             cherrypy.session[facebookConstants.GOOGLE_ACCESS_TOKEN] = accessToken
-            facebook.user.loadUser(userID, loginTypes.Google)
+            #facebook.user.loadUser(userID, loginTypes.Google)
             
             #u = dal.user.user()
             #u.addGglUser(facebook.user.getUserId())

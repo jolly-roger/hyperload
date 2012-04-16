@@ -19,21 +19,18 @@
                 };
             };
 
-            if(accessToken != null){
-                jQuery.ajaxSetup({
-                    'beforeSend': function(xhr) {xhr.setRequestHeader("Referer", "")}
-                });
-                
-                $.getJSON("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" +
-                    accessToken, function(data){
-                        $.get( "/auth/ggllogin", "accessToken=" + accessToken +
-                            "&userID=" + data["userid"], function(url){
-                            if(data){
-                                window.opener.location = url;
-                                window.close();
-                            }
+            if(accessToken != null){                
+                //$.getJSON("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" +
+                //    accessToken, function(data){
+                    $.get( "/auth/ggllogin", "accessToken=" + accessToken //+
+                        //"&userID=" + data["userid"]
+                        , function(url){
+                        if(data){
+                            window.opener.location = url;
+                            window.close();
+                        }
                     });
-                });
+                //});
             };
         });
     </script>
