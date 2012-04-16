@@ -14,8 +14,6 @@
             var accessToken = null;
             
             for(paramIndex in params){
-                alert(paramIndex);
-                
                 var keyValue = params[paramIndex].split("=");
                 
                 if(keyValue[0] == "access_token"){
@@ -23,10 +21,8 @@
                     break;
                 };
             };
-            
-            alert(accessToken);
-            
-            if(accessToken == null){
+
+            if(accessToken != null){
                 $.post( "/auth/ggllogin", "accessToken=" + accessToken //+
                     //"&userID=" + response.authResponse.userID
                     , function(data){
