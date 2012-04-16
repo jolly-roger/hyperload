@@ -23,7 +23,9 @@
          }(document));
         
         $(function() {
-            $("#loginBtn").click(login);
+            $("#loginBtn").click(function(){
+                hyperload.auth.login("fb");
+            });
         });
       </script>
       
