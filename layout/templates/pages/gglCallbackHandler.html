@@ -25,7 +25,7 @@
                     $.get( "/auth/ggllogin", "accessToken=" + accessToken //+
                         //"&userID=" + data["userid"]
                         , function(url){
-                        if(data){
+                        if(url){
                             window.opener.location = url;
                             window.close();
                         }
