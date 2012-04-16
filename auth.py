@@ -36,9 +36,9 @@ class auth(object):
         if accessToken is not None:
             cherrypy.session[facebookConstants.GOOGLE_ACCESS_TOKEN] = accessToken
             
-            cherrypy.log.error(
-                urllib.request.urlopen("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + accessToken).
-                read())
+            
+            urllib.request.urlopen("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + accessToken)
+            
             
             
             #facebook.user.loadUser(userID, loginTypes.Google)
