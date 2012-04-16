@@ -34,5 +34,5 @@ def getJS():
     return tmpl.render()
     
 def getGglCallbackHandler():
-    tmpl = getenv().get_template("pages/gglCallbackHandler.js")
+    tmpl = getenv().get_template("pages/gglCallbackHandler.html")
     return tmpl.render()
