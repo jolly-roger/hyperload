@@ -33,7 +33,7 @@ class auth(object):
     
     @cherrypy.expose
     def ggllogin(self, accessToken = None):#, userID = None):
-        if accessToken is not None:
+        #if accessToken is not None:
             cherrypy.session[facebookConstants.GOOGLE_ACCESS_TOKEN] = accessToken
             
             
@@ -41,7 +41,7 @@ class auth(object):
                 urllib.request.urlopen("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + accessToken).
                 read(), encoding="utf-8")
             
-            cherrypy.log.error(data)
+            return data
             
             
             #facebook.user.loadUser(userID, loginTypes.Google)
@@ -50,7 +50,7 @@ class auth(object):
             #u.addGglUser(facebook.user.getUserId())
             #u.close()
             
-        return "/home"
+        #return "/home"
     
     
     @cherrypy.expose
