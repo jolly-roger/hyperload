@@ -20,7 +20,11 @@
             };
 
             if(accessToken != null){
-                $.get("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" +
+                jQuery.ajaxSetup({
+                    'beforeSend': function(xhr) {xhr.setRequestHeader("Referer", "")}
+                });
+                
+                $.getJSON("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" +
                     accessToken, function(data){
                         $.get( "/auth/ggllogin", "accessToken=" + accessToken +
                             "&userID=" + data["userid"], function(url){
