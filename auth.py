@@ -3,7 +3,7 @@ import cherrypy
 
 import facebook.user
 from facebook import authorization
-from facebook import constants as facebookConstatns
+from facebook import constants as facebookConstants
 
 import dal.user
 
@@ -21,7 +21,7 @@ class auth(object):
     @cherrypy.expose
     def fblogin(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
         if accessToken is not None:
-            cherrypy.session[facebookConstatns.FACEBOOK_ACCESS_TOKEN] = accessToken
+            cherrypy.session[facebookConstants.FACEBOOK_ACCESS_TOKEN] = accessToken
             facebook.user.loadUser(userID)
             
             u = dal.user.user()
@@ -33,8 +33,7 @@ class auth(object):
     @cherrypy.expose
     def ggllogin(self, accessToken = None):
         if accessToken is not None:
-            pass
-            #cherrypy.session[facebookConstatns.FACEBOOK_ACCESS_TOKEN] = accessToken
+            cherrypy.session[facebookConstants.GOOGLE_ACCESS_TOKEN] = accessToken
             #facebook.user.loadUser(userID)
             #
             #u = dal.user.user()
