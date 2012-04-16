@@ -37,7 +37,8 @@ class auth(object):
             cherrypy.session[facebookConstants.GOOGLE_ACCESS_TOKEN] = accessToken
             
             
-            urllib.request.urlopen("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + accessToken)
+            data = urllib.request.urlopen("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + accessToken).read()
+            
             
             
             
