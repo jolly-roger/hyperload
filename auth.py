@@ -1,5 +1,6 @@
 import cherrypy
 import urllib.request
+import json
 
 import facebook.user
 from facebook import authorization
