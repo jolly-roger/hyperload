@@ -39,7 +39,7 @@ class auth(object):
             
             data = urllib.request.urlopen("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" + accessToken).read()
             
-            
+            cherrypy.log.error(data)
             
             
             #facebook.user.loadUser(userID, loginTypes.Google)
