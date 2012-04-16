@@ -23,13 +23,18 @@
          }(document));
         
         $(function() {
-            $("#loginBtn").click(function(){
+            $("#fbLoginBtn").click(function(){
                 hyperload.auth.login("fb");
+            });
+            $("#gglLoginBtn").click(function(){
+                hyperload.auth.login("ggl");
             });
         });
       </script>
       
-    <a id="loginBtn" class="fb_button fb_button_medium">
+    <a id="fbLoginBtn" class="fb_button fb_button_medium">
         <span class="fb_button_text">Login with Facebook</span>
     </a>
+    $nbsp;
+    <a id="gglLoginBtn" >Login with Google</a>
 {% endblock %}

@@ -25,6 +25,14 @@ hyperload._auth = function(){
                 }
             });
         }else if(loginType == "ggl"){
+            $.get("https://accounts.google.com/o/oauth2/auth?" +
+                "scope=https://www.googleapis.com/auth/userinfo.email+" +
+                "https://www.googleapis.com/auth/userinfo.profile&" +
+                "response_type=code&" +
+                "redirect_uri=http://hyperload.net&state=/profile&" +
+                "client_id=863631441711.apps.googleusercontent.com", function(data){
+                    alert(data);
+                });
         };
     };
 };
