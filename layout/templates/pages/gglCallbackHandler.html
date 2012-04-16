@@ -27,6 +27,8 @@
                     //"&userID=" + response.authResponse.userID
                     , function(data){
                         if(data){
+                            alert(data);
+                            
                             window.opener.location = data;
                             window.close();
                         }
