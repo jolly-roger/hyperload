@@ -28,3 +28,7 @@ class auth(object):
             u.close()
             
         return "/home"
+    
+    @cherrypy.expose
+    def gglcallbackhandler(self):
+        return "ggl"

@@ -28,8 +28,9 @@ hyperload._auth = function(){
             window.open("https://accounts.google.com/o/oauth2/auth?" +
                 "scope=https://www.googleapis.com/auth/userinfo.email+" +
                 "https://www.googleapis.com/auth/userinfo.profile&" +
-                "response_type=code&" +
-                "redirect_uri=http://hyperload.net&state=/profile&" +
+                "response_type=token&" +
+                "redirect_uri=http://hyperload.net/auth/gglcallbackhandler&" +
+                "state=/profile&" +
                 "client_id=863631441711.apps.googleusercontent.com","_blank",
                 "height=400,width=400,status=yes,toolbar=no,menubar=no,location=no");
         };
