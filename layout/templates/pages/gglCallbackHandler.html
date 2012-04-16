@@ -20,19 +20,13 @@
             };
 
             if(accessToken != null){                
-                //$.getJSON("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=" +
-                //    accessToken, function(data){
-                    $.get( "/auth/ggllogin", "accessToken=" + accessToken //+
-                        //"&userID=" + data["userid"]
-                        , function(url){
-                        if(url){
-                            alert(url);
-                            
-                            //window.opener.location = url;
-                            //window.close();
-                        }
-                    });
-                //});
+                $.get( "/auth/ggllogin", "accessToken=" + accessToken
+                    , function(url){
+                    if(url){
+                        window.opener.location = url;
+                        window.close();
+                    }
+                });
             };
         });
     </script>
