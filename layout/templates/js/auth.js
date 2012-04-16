@@ -14,7 +14,7 @@ hyperload._auth = function(){
             FB.login(function(response) {
                 if (response.authResponse && response.authResponse.accessToken &&
                     response.authResponse.userID) {
-                    $.post( "/auth/login", "accessToken=" + response.authResponse.accessToken +
+                    $.post( "/auth/fblogin", "accessToken=" + response.authResponse.accessToken +
                         "&userID=" + response.authResponse.userID, function(data){
                             if(data){
                                 window.location = data;

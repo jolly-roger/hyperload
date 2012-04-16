@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block scriptsAndStyles%}
+{% endblock%}
+
+{% block mainContent %}
+    <script type="text/javascript">
+        $(function(){
+            //http://hyperload.net/auth/gglcallbackhandler#state=/profile&
+            //access_token=ya29.AHES6ZRsCz_ofw8yNjwjR5ZJdJxmovR2-WPmflV3XVwq0Q&token_type=Bearer&expires_in=3600
+            
+            alert(window.location.hash);
+            
+            //$.post( "/auth/ggllogin", "accessToken=" + response.authResponse.accessToken //+
+            //    //"&userID=" + response.authResponse.userID
+            //    , function(data){
+            //        if(data){
+            //            window.opener.location = data;
+            //            window.close();
+            //        }
+            //});
+        });
+    </script>
+{% endblock %}

@@ -5,8 +5,9 @@ import facebook.user
 from facebook import authorization
 from facebook import constants as facebookConstatns
 
-
 import dal.user
+
+from layout import layout
 
 
 class auth(object):
@@ -18,7 +19,7 @@ class auth(object):
         return "/"
         
     @cherrypy.expose
-    def login(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
+    def fblogin(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
         if accessToken is not None:
             cherrypy.session[facebookConstatns.FACEBOOK_ACCESS_TOKEN] = accessToken
             facebook.user.loadUser(userID)
@@ -30,5 +31,19 @@ class auth(object):
         return "/home"
     
     @cherrypy.expose
+    def ggllogin(self, accessToken = None):
+        if accessToken is not None:
+            pass
+            #cherrypy.session[facebookConstatns.FACEBOOK_ACCESS_TOKEN] = accessToken
+            #facebook.user.loadUser(userID)
+            #
+            #u = dal.user.user()
+            #u.addFbUser(facebook.user.getUserId())
+            #u.close()
+            
+        return "/home"
+    
+    
+    @cherrypy.expose
     def gglcallbackhandler(self):
-        return "ggl"
+        return layout.getGglCallbackHandler()

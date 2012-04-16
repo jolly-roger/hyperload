@@ -32,3 +32,7 @@ def getHome():
 def getJS():
     tmpl = getenv().get_template("js/common.js")
     return tmpl.render()
+    
+def getGglCallbackHandler():
+    tmpl = getenv().get_template("pages/gglCallbackHandler.js")
+    return tmpl.render()
