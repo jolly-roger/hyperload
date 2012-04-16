@@ -9,16 +9,29 @@
             //http://hyperload.net/auth/gglcallbackhandler#state=/profile&
             //access_token=ya29.AHES6ZRsCz_ofw8yNjwjR5ZJdJxmovR2-WPmflV3XVwq0Q&token_type=Bearer&expires_in=3600
             
-            alert(window.location.hash);
+            var rawParams = window.location.hash.substr(1, (window.location.hash.length - 1));
+            var params = rawParams.split("&");
+            var accessToken = null;
             
-            //$.post( "/auth/ggllogin", "accessToken=" + response.authResponse.accessToken //+
-            //    //"&userID=" + response.authResponse.userID
-            //    , function(data){
-            //        if(data){
-            //            window.opener.location = data;
-            //            window.close();
-            //        }
-            //});
+            for(paramIndex in params){
+                var keyValue = params[paramIndex].split("=");
+                
+                if(keyValue[0] == "access_token"){
+                    accessToken = keyValue[1];
+                    break;
+                };
+            };
+            
+            if(accessToken == null){
+                $.post( "/auth/ggllogin", "accessToken=" + accessToken //+
+                    //"&userID=" + response.authResponse.userID
+                    , function(data){
+                        if(data){
+                            window.opener.location = data;
+                            window.close();
+                        }
+                });
+            };
         });
     </script>
 {% endblock %}
