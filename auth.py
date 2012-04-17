@@ -33,7 +33,7 @@ class auth(object):
         return "/home"
     
     @cherrypy.expose
-    def ggllogin(self, accessToken = None):#, userID = None):
+    def ggllogin(self, accessToken = None):
         if accessToken is not None:
             cherrypy.session[facebookConstants.GOOGLE_ACCESS_TOKEN] = accessToken
 
@@ -45,9 +45,9 @@ class auth(object):
 
             facebook.user.loadUser(data["user_id"], loginTypes.Google)
             
-            #u = dal.user.user()
-            #u.addGglUser(facebook.user.getUserId())
-            #u.close()
+            u = dal.user.user()
+            u.addGglUser(facebook.user.getUserId())
+            u.close()
             
         return "/home"
     
@@ -55,8 +55,3 @@ class auth(object):
     @cherrypy.expose
     def gglcallbackhandler(self):
         return layout.getGglCallbackHandler()
-        
-    
-    @cherrypy.expose
-    def test(self):
-        return facebook.user.getUserId()
