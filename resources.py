@@ -3,7 +3,7 @@ import json
 import urllib.request
 
 import dal.resource
-import facebook.user
+import auth.user
 
 
 from isAuthorized import isAuthorized
@@ -17,7 +17,7 @@ class resources(object):
         
         if alias is not None and not alias == "" and domain is not None and not domain == "":
             r = dal.resource.resource()
-            resourceId = r.add(alias, domain, facebook.user.getUserId())
+            resourceId = r.add(alias, domain, auth.user.getUserId())
             r.close()
 
         return str(resourceId)
@@ -26,7 +26,7 @@ class resources(object):
     @isAuthorized
     def getuserall(self):
         r = dal.resource.resource()
-        resources = r.getuserall(facebook.user.getUserId())
+        resources = r.getuserall(auth.user.getUserId())
         r.close()
         
         return  json.dumps(resources)

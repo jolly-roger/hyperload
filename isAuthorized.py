@@ -1,7 +1,7 @@
 import cherrypy
 
-from facebook import authorization
-from facebook import constants
+from auth import authorization
+from auth import constants
 
 from layout import layout
 

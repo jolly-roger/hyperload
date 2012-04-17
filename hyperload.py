@@ -1,5 +1,6 @@
 import cherrypy
 import os.path
+from cherrypy import _cperror
 
 from isAuthorized import isAuthorized
 
@@ -33,6 +34,7 @@ def error_page_default(status, message, traceback, version):
     return "Error"
 
 cherrypy.config.update({'error_page.default': error_page_default})
+
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")

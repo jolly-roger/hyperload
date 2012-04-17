@@ -2,8 +2,6 @@ import cherrypy
 
 from jinja2 import Environment, FileSystemLoader
 
-from facebook import constants as facebookConstatns
-
 
 env = None
 
