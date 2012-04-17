@@ -5,7 +5,7 @@
 
 {% block mainContent %}
     <div id="fb-root"></div>
-      <script>
+    <script>
         window.fbAsyncInit = function() {
           FB.init({
             appId      : '328250827233463',
@@ -30,16 +30,33 @@
                 return hyperload.access.login("ggl");
             });
         });
-      </script>
-      
-    <a id="fbLoginBtn" class="fb_button fb_button_medium">
-        <span class="fb_button_text">Login with Facebook</span>
-    </a>
-    &nbsp;
-    <a  ></a>
+    </script>
     
+    <style type="text/css">
+        div#header {
+            width: 100%;
+            height: 200px;
+            border: 1px solid red;
+        }
+        
+        div#footer {
+            width: 100%;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>    
     
-    <a href="#" id="gglLoginBtn">Login with Google</a>
-
-    
+    <div id="header">
+        
+    </div>
+    <div id="content">
+        <a id="fbLoginBtn" class="fb_button fb_button_medium">
+            <span class="fb_button_text">Login with Facebook</span>
+        </a>
+        &nbsp;
+        <a href="#" id="gglLoginBtn">Login with Google</a>
+    </div>
+    <div id="footer">
+        
+    </div>    
 {% endblock %}
