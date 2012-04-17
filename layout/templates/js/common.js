@@ -46,4 +46,4 @@ function addResource(id, alias, domain, isVerified){
 	});
 };
 
-{% include "js/auth.js"%}
+{% include "js/access.js"%}

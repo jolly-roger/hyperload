@@ -20,7 +20,7 @@
             };
 
             if(accessToken != null){                
-                $.get( "/auth/ggllogin", "accessToken=" + accessToken
+                $.get( "/access/ggllogin", "accessToken=" + accessToken
                     , function(url){
                     if(url){
                         window.opener.location = url;

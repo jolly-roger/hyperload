@@ -7,12 +7,12 @@ from isAuthorized import isAuthorized
 from layout import layout
 
 import resources
-import auth
+import access
 
 
 class hyperload(object):
     resources = resources.resources()
-    auth = auth.auth()
+    access = access.access()
     
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):

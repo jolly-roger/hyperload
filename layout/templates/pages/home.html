@@ -21,7 +21,7 @@
     
 	<script>
 	$(function() {
-        $("#logoutBtn").click(hyperload.auth.logout);
+        $("#logoutBtn").click(hyperload.access.logout);
         
         $.getJSON('/resources/getuserall', function(data) {
             for(var i = 0; i < data.length; i ++){
