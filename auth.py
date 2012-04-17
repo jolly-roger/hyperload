@@ -24,10 +24,10 @@ class auth(object):
     def fblogin(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
         if accessToken is not None:
             cherrypy.session[facebookConstants.FACEBOOK_ACCESS_TOKEN] = accessToken
-            facebook.user.loadUser(int(userID), loginTypes.Facebook)
+            facebook.user.loadUser("fb_" + userID, loginTypes.Facebook)
             
             u = dal.user.user()
-            u.addFbUser(facebook.user.getUserId())
+            u.add(facebook.user.getUserId())
             u.close()
             
         return "/home"
@@ -43,10 +43,10 @@ class auth(object):
             
             data = json.loads(rawData)
 
-            facebook.user.loadUser(int(data["user_id"]), loginTypes.Google)
+            facebook.user.loadUser("ggl_" + data["user_id"], loginTypes.Google)
             
             u = dal.user.user()
-            u.addGglUser(facebook.user.getUserId())
+            u.add(facebook.user.getUserId())
             u.close()
             
         return "/home"

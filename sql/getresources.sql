@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION getresources(outeruserid bigint)
+CREATE OR REPLACE FUNCTION getresources(outeruserid varchar(128))
  RETURNS setof resource
 AS $BODY$
 BEGIN

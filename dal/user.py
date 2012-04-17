@@ -5,10 +5,6 @@ class user(base.base):
     def __init__(self):
         base.base.__init__(self)
     
-    def addFbUser(self, userId):
-        self.cur.callproc("addfbuser", [userId])
-        self.conn.commit()
-        
-    def addGglUser(self, userId):
-        self.cur.callproc("addggluser", [userId])
+    def add(self, userId):
+        self.cur.callproc("adduser", [userId])
         self.conn.commit()
