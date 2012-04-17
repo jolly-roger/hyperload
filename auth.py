@@ -43,7 +43,7 @@ class auth(object):
             
             data = json.loads(rawData)
 
-            facebook.user.loadUser(data["user_id"], loginTypes.Google)
+            facebook.user.loadUser(int(data["user_id"]), loginTypes.Google)
             
             u = dal.user.user()
             u.addGglUser(facebook.user.getUserId())
