@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION addggluser(ggluserid bigint)
+CREATE OR REPLACE FUNCTION addggluser(ggluserid numeric)
  RETURNS boolean
 AS $BODY$
 BEGIN

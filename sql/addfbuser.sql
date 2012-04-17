@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION addfbuser(fbuserid bigint)
+CREATE OR REPLACE FUNCTION addfbuser(fbuserid numeric)
  RETURNS boolean
 AS $BODY$
 BEGIN

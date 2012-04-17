@@ -24,7 +24,7 @@ class auth(object):
     def fblogin(self, accessToken = None, expiresIn = None, signedRequest = None, userID = None):
         if accessToken is not None:
             cherrypy.session[facebookConstants.FACEBOOK_ACCESS_TOKEN] = accessToken
-            facebook.user.loadUser(userID, loginTypes.Facebook)
+            facebook.user.loadUser(int(userID), loginTypes.Facebook)
             
             u = dal.user.user()
             u.addFbUser(facebook.user.getUserId())
