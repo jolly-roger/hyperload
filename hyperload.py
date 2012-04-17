@@ -13,6 +13,8 @@ class hyperload(object):
     resources = resources.resources()
     auth = auth.auth()
     
+    def _cp_on_error(self):
+        cherrypy.response.body = ("Error")    
     
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):
@@ -28,10 +30,6 @@ class hyperload(object):
         cherrypy.response.headers['Content-Type'] = "text/javascript"
         
         return layout.getJS()
-        
-    @cherrypy.expose
-    def default(self):
-        return "Not found"
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")

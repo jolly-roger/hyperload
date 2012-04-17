@@ -68,7 +68,3 @@ class resources(object):
         r = dal.resource.resource()
         r.remove(resourceId)
         r.close()
-        
-    @cherrypy.expose
-    def default(self):
-        return "Not found"
