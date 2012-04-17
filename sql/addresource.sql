@@ -1,4 +1,5 @@
-CREATE OR REPLACE FUNCTION addresource(resourcealias varchar(256), resourcedomain varchar(256), outeruserid bigint)
+CREATE OR REPLACE FUNCTION addresource(resourcealias varchar(256), resourcedomain varchar(256),
+    outeruserid varchar(128))
  RETURNS bigint
 AS $BODY$
 declare

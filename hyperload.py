@@ -28,6 +28,10 @@ class hyperload(object):
         cherrypy.response.headers['Content-Type'] = "text/javascript"
         
         return layout.getJS()
+        
+    @cherrypy.expose
+    def default(self):
+        return "Not found"
 
 
 hyperloadconf = os.path.join(os.path.dirname(__file__), "hyperload.conf")

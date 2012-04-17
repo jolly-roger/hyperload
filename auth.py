@@ -55,3 +55,7 @@ class auth(object):
     @cherrypy.expose
     def gglcallbackhandler(self):
         return layout.getGglCallbackHandler()
+        
+    @cherrypy.expose
+    def default(self):
+        return "Not found"
