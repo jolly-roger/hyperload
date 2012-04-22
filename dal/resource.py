@@ -1,5 +1,4 @@
 from . import base
-from . import constants
 
 import cherrypy
 

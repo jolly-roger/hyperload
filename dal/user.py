@@ -1,5 +1,4 @@
 from . import base
-from . import constants
 
 class user(base.base):
     def __init__(self):
