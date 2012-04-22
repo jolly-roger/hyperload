@@ -6,7 +6,7 @@ import auth.user
 from . import authorization
 from . import constants as authConstants
 from . import loginTypes
-from . import layout
+from auth.layout import layout
 
 import dal.user
 
@@ -53,4 +53,4 @@ class access(object):
     
     @cherrypy.expose
     def gglcallbackhandler(self):
-        return layout.layout.getGglCallbackHandler()
+        return layout.getGglCallbackHandler()
