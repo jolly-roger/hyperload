@@ -1,8 +1,6 @@
 import psycopg2
 import cherrypy
 
-from . import constants
-
 
 class base(object):
     def __init__(self):
