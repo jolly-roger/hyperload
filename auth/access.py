@@ -6,10 +6,9 @@ import auth.user
 from . import authorization
 from . import constants as authConstants
 from . import loginTypes
+from . import layout
 
 import dal.user
-
-from layout import layout
 
 
 class access(object):

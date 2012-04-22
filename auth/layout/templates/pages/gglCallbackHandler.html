@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block scriptsAndStyles%}
+{% endblock%}
+
+{% block mainContent %}
+    <script type="text/javascript">
+        $(function(){
+            var rawParams = window.location.hash.substr(1, (window.location.hash.length - 1));
+            var params = rawParams.split("&");
+            var accessToken = null;
+            
+            for(paramIndex in params){
+                var keyValue = params[paramIndex].split("=");
+                
+                if(keyValue[0] == "access_token"){
+                    accessToken = keyValue[1];
+                    break;
+                };
+            };
+
+            if(accessToken != null){                
+                $.get( "/access/ggllogin", "accessToken=" + accessToken
+                    , function(url){
+                    if(url){
+                        window.opener.location = url;
+                        window.close();
+                    }
+                });
+            };
+        });
+    </script>
+{% endblock %}
