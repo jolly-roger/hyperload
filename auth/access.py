@@ -53,4 +53,4 @@ class access(object):
     
     @cherrypy.expose
     def gglcallbackhandler(self):
-        return layout.getGglCallbackHandler()
+        return layout.layout.getGglCallbackHandler()
