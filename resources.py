@@ -6,12 +6,12 @@ import dal.resource
 import auth.user
 
 
-from isAuthorized import isAuthorized
+from auth import isAuthorized as authorization
 
 
 class resources(object):
     @cherrypy.expose
-    @isAuthorized
+    @authorization.isAuthorized
     def add(self, alias=None, domain=None):
         resourceId = -1
         
@@ -23,7 +23,7 @@ class resources(object):
         return str(resourceId)
             
     @cherrypy.expose
-    @isAuthorized
+    @authorization.isAuthorized
     def getuserall(self):
         r = dal.resource.resource()
         resources = r.getuserall(auth.user.getUserId())
@@ -32,7 +32,7 @@ class resources(object):
         return  json.dumps(resources)
         
     @cherrypy.expose
-    @isAuthorized
+    @authorization.isAuthorized
     def verify(self, resourceId):
         isVerified = False
         r = dal.resource.resource()
@@ -52,7 +52,7 @@ class resources(object):
             return str(0)
     
     @cherrypy.expose
-    @isAuthorized
+    @authorization.isAuthorized
     def getverificationfile(self, resourceId):
         cherrypy.response.headers['Content-Disposition'] = "attachment; filename=hyperload.txt"
         
@@ -63,7 +63,7 @@ class resources(object):
         return resource[0][4]
         
     @cherrypy.expose
-    @isAuthorized
+    @authorization.isAuthorized
     def remove(self, resourceId):
         r = dal.resource.resource()
         r.remove(resourceId)

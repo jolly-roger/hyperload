@@ -2,24 +2,24 @@ import cherrypy
 import os.path
 from cherrypy import _cperror
 
-from isAuthorized import isAuthorized
-
 from layout import layout
 
+from auth import isAuthorized as authorization
+from auth import access as webAuth
+
 import resources
-import access
 
 
 class hyperload(object):
     resources = resources.resources()
-    access = access.access()
+    access = webAuth.access()
     
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):
         return layout.getIndex()
         
     @cherrypy.expose
-    @isAuthorized
+    @authorization.isAuthorized
     def home(self):
         return layout.getHome()
         
