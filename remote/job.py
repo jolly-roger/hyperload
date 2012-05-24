@@ -37,7 +37,7 @@ class job(object):
         s.send("{"\
                     "header:{"\
                         "method: \"start_job\","\
-                        "job: \"" + jobId + "\""\
+                        "job: \"" + str(jobId) + "\""\
                     "}," \
                     "body:{}"\
                "}".encode('ascii'))
