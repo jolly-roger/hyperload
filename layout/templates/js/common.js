@@ -10,8 +10,8 @@ function addResource(id, alias, domain, isVerified){
 			"<button id=\"verify_resource_" + id + "\">Verify</button></td>";
     };
 
-	resourceHtml += "<td style=\"width: 200px;\">" +
-			"<div class=\"row-fluid\">" +
+	resourceHtml += "<td>" +
+			"<div class=\"row-fluid\" style=\"width: 200px;\">" +
 				"<div class=\"span6\">" +
 					"<button id=\"remove_resource_" + id + "\">Remove</button>" +
 				"</div>" +
