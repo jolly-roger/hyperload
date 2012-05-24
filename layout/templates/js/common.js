@@ -63,7 +63,7 @@ function addJob(id, alias){
         "<td>" + alias + "</td>";
 		
 	jobHtml += "<td>" +
-			"<div class=\"row-fluid\" style=\"width: 600px;\">" +
+			"<div class=\"row-fluid\" style=\"width: 500px;\">" +
 				"<div class=\"span2\">" +
 					"<button id=\"remove_job_" + id + "\">Remove</button>" +
 				"</div>" +
