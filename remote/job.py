@@ -39,7 +39,7 @@ class job(object):
                         "method: \"start_job\","\
                         "job: \"" + str(jobId) + "\""\
                     "}," \
-                    "body:{}"\
+                    "body:\"\""\
                "}"
         
         s.send(msg.encode('ascii'))
