@@ -36,10 +36,10 @@ class job(object):
         
         msg = "{"\
                     "header:{"\
-                        "method: \"start_job\","\
-                        "job: \"" + str(jobId) + "\""\
+                        "\"method\": \"start_job\","\
+                        "\"job\": \"" + str(jobId) + "\""\
                     "}," \
-                    "body:\"\""\
+                    "body:{}"\
                "}"
         
         s.send(msg.encode('ascii'))
