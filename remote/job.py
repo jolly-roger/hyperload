@@ -24,19 +24,7 @@ class job(object):
     def start(self, jobId=None):
         s = socket.socket()
         s.connect((HOST_NAME, HOST_PORT))
-        
-        #sendmsg = "{}"
-        #sendmsglen = len(sendmsg)
-        #totalsent = 0
-        #
-        #while totalsent < sendmsglen:
-        #    sent = s.send(sendmsg[totalsent:])
-        #    if sent == 0:
-        #        raise RuntimeError("socket connection broken")
-        #    totalsent = totalsent + sent
-        #
-        #recvmsg = ""
-        
+
         msg = "{"\
                     "\"header\":{"\
                         "\"method\": \"" + START_JOB_SIG + "\","\
@@ -45,9 +33,17 @@ class job(object):
                     "\"body\":{}"\
                "}"
         
-        s.send(msg.encode('utf-8'))
+        s.sendall(msg.encode('utf-8'))
 
-        m = s.recv(2)
+        m = ""
+        
+        while True:
+            data = s.recv(2)
+            if data:
+                m += data
+            else:
+                break
+
         s.close()
         
         return m    
