@@ -13,7 +13,7 @@ function addResource(id, alias, domain, isVerified){
 	resourceHtml += "<td>" +
 			"<div class=\"row-fluid\">" +
 				"<div class=\"span6\">" +
-					"<button id=\"remove_resource_" + id + "\">Remove</button>" +
+					"<button id=\"remove_resource_" + id + "\" class=\"btn\">Remove</button>" +
 				"</div>" +
 				"<div class=\"span6\">" +
 					"<button id=\"resource_jobs_" + id + "\">Jobs</button>" +
