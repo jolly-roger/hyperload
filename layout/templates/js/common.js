@@ -79,6 +79,8 @@ function addJob(id, alias){
 				"<div class=\"span2\">" +
 					"<button id=\"stats_job_" + id + "\">Statistic</button>" +
 				"</div>" +
+				"<div class=\"span2\">" +
+				"</div>" +
 			"</div>" +
 		"</td></tr>";
     
