@@ -12,10 +12,10 @@ function addResource(id, alias, domain, isVerified){
 
 	resourceHtml += "<td>" +
 			"<div class=\"row-fluid\">" +
-				"<div class=\"span6\">" +
-					"<button id=\"remove_resource_" + id + "\" class=\"btn\">Remove</button>" +
+				"<div class=\"span1\">" +
+					"<button id=\"remove_resource_" + id + "\">Remove</button>" +
 				"</div>" +
-				"<div class=\"span6\">" +
+				"<div class=\"span1\">" +
 					"<button id=\"resource_jobs_" + id + "\">Jobs</button>" +
 				"</div>" +
 			"</div>" +
@@ -49,7 +49,7 @@ function addResource(id, alias, domain, isVerified){
 			}
 		}).dialog( "open" );
 	});
-	$("#remove_resource_" + id).click(function(){
+	$("#remove_resource_" + id).button().click(function(){
 		$.get("/resources/remove/" + id);
 		$(this).parent().parent().remove();
 	});
