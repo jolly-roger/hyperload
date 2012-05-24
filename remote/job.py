@@ -1,6 +1,4 @@
 import cherrypy
-import json
-import urllib.request
 import socket
 
 import dal.job
@@ -16,6 +14,7 @@ JOB_STATS_SIG = "job_stats"
 
 HOST_NAME = "hyperload.net"
 HOST_PORT = 11011
+READ_BUFFER_SIZE = 1024
 
 
 class job(object):
@@ -24,41 +23,64 @@ class job(object):
     def start(self, jobId=None):
         s = socket.socket()
         s.connect((HOST_NAME, HOST_PORT))
-
+        self.sendmsg(START_JOB_SIG, jobId)
+        m = self.recvmsg(s)
+        s.close()
+        
+        return m
+            
+    @cherrypy.expose
+    @authorization.isAuthorized
+    def stop(self, jobId=None):
+        s = socket.socket()
+        s.connect((HOST_NAME, HOST_PORT))
+        self.sendmsg(STOP_JOB_SIG, jobId)
+        m = self.recvmsg(s)
+        s.close()
+        
+        return m
+        
+    @cherrypy.expose
+    @authorization.isAuthorized
+    def getstatus(self, jobId):
+        s = socket.socket()
+        s.connect((HOST_NAME, HOST_PORT))
+        self.sendmsg(JOB_STATUS_SIG, jobId)
+        m = self.recvmsg(s)
+        s.close()
+        
+        return m
+        
+    @cherrypy.expose
+    @authorization.isAuthorized
+    def getstats(self, jobId):
+        s = socket.socket()
+        s.connect((HOST_NAME, HOST_PORT))
+        self.sendmsg(JOB_STATS_SIG, jobId)
+        m = self.recvmsg(s)
+        s.close()
+        
+        return m
+    
+    def recvmsg(s):
+        m = ""
+        
+        while True:
+            data = s.recv(READ_BUFFER_SIZE)
+            if data:
+                m += str(data, encoding="utf-8")
+            else:
+                break
+        
+        return m
+    
+    def sendmsg(s, method, jodId):
         msg = "{"\
                     "\"header\":{"\
-                        "\"method\": \"" + START_JOB_SIG + "\","\
+                        "\"method\": \"" + method + "\","\
                         "\"job\": \"" + jobId + "\""\
                     "}," \
                     "\"body\":{}"\
                "}"
         
-        s.sendall(msg.encode('utf-8'))
-
-        m = ""
-        
-        while True:
-            data = s.recv(2)
-            if data:
-                m += str(data, encoding="utf-8")
-            else:
-                break
-
-        s.close()
-        
-        return m    
-            
-    @cherrypy.expose
-    @authorization.isAuthorized
-    def stop(self, jobId=None):
-        return "test"
-        
-    @cherrypy.expose
-    @authorization.isAuthorized
-    def getstatus(self, jobId):
-        pass
-        
-    @cherrypy.expose
-    @authorization.isAuthorized
-    def getstats(self, jobId):
-        pass
+        s.sendall(msg.encode("utf-8"))
