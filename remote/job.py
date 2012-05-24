@@ -23,7 +23,7 @@ class job(object):
     def start(self, jobId=None):
         s = socket.socket()
         s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(START_JOB_SIG, jobId)
+        self.sendmsg(s, START_JOB_SIG, jobId)
         m = self.recvmsg(s)
         s.close()
         
@@ -34,7 +34,7 @@ class job(object):
     def stop(self, jobId=None):
         s = socket.socket()
         s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(STOP_JOB_SIG, jobId)
+        self.sendmsg(s, STOP_JOB_SIG, jobId)
         m = self.recvmsg(s)
         s.close()
         
@@ -45,7 +45,7 @@ class job(object):
     def getstatus(self, jobId):
         s = socket.socket()
         s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(JOB_STATUS_SIG, jobId)
+        self.sendmsg(s, JOB_STATUS_SIG, jobId)
         m = self.recvmsg(s)
         s.close()
         
@@ -56,7 +56,7 @@ class job(object):
     def getstats(self, jobId):
         s = socket.socket()
         s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(JOB_STATS_SIG, jobId)
+        self.sendmsg(s, JOB_STATS_SIG, jobId)
         m = self.recvmsg(s)
         s.close()
         
