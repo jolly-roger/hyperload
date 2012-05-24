@@ -51,9 +51,10 @@ function addResource(id, alias, domain, isVerified){
 	});
 	$("#remove_resource_" + id).button().click(function(){
 		$.get("/resources/remove/" + id);
-		$(this).parent().parent().remove();
+		$(this).parent().parent().parent().parent().remove();
 	});
 	$("#resource_jobs_" + id).button().click(function(){
+		window.location = "/jobs/" + id + "/";
 	});
 };
 

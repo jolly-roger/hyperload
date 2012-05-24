@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block scriptsAndStyles%}
+{% endblock%}
+
+{% block mainContent %}
+    <a href="#" id="logoutBtn">logout</a>
+    
+    <style>
+		label, input { display:block; }
+		input.text { margin-bottom:12px; width:95%; padding: .4em; }
+		fieldset { padding:0; border:0; margin-top:25px; }
+		h1 { font-size: 1.2em; margin: .6em 0; }
+		div#resources-container { width: 350px; margin: 20px 0; }
+		div#resources-container table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+		div#resources-container table td, div#resources-container table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+		.ui-dialog .ui-state-error { padding: .3em; }
+		.validateTips { border: 1px solid transparent; padding: 0.3em; }
+	</style>
+    
+	<script>
+	$(function() {
+        $("#logoutBtn").click(hyperload.access.logout);
+        
+        $.getJSON('/jobs/getuserall', function(data) {
+            for(var i = 0; i < data.length; i ++){
+                addJob(data[i][0], data[i][1]);
+            };
+        });
+
+		function updateTips( t ) {
+            $(".validateTips").text( t ).addClass( "ui-state-error" );
+		}
+
+		function checkLength( o, n, min, max ) {
+			if ( o.val().length > max || o.val().length < min ) {
+				o.addClass( "ui-state-error" );
+				updateTips( "Length of " + n + " must be between " +
+					min + " and " + max + "." );
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function checkRegexp( o, regexp, n ) {
+			if (!( regexp.test(o.val()))){
+				o.addClass("ui-state-error");
+				updateTips(n);
+				return false;
+			}else{
+				return true;
+			}
+		}
+
+        $("#add-job").button().click(function() {
+            $('{% include "dialogs/addjob.html"%}').dialog({
+                autoOpen: false,
+                height: 400,
+                width: 450,
+                modal: true,
+                buttons: {
+                    "Add": function() {
+                        var alias = $("#alias");
+                        var allFields = $([]).add(alias);
+                        var bValid = true;
+                        
+                        allFields.removeClass( "ui-state-error" );
+    
+                        if (bValid) {
+                            var aliasVal = alias.val();
+                            
+                            $.post("/jobs/add", {alias: aliasVal, resourceId: resourceIdVal}, function(id){
+                                    addJob(id, aliasVal);
+                            });
+                            $( this ).dialog( "close" );
+                        }
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            }).dialog("open");
+        });
+	});
+	</script>
+
+<div id="jobs-container" class="ui-widget">
+	<h1>Jobs:</h1>
+	<table id="jobs" class="ui-widget ui-widget-content">
+		<thead>
+			<tr class="ui-widget-header ">
+				<th>Alias</th>
+                <th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</div>
+<button id="add-job">Add job</button>
+
+{% endblock %}

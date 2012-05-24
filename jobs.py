@@ -40,3 +40,8 @@ class jobs(object):
         j = dal.job.job()
         j.remove(jobId)
         j.close()
+        
+    @cherrypy.expose
+    @authorization.isAuthorized
+    def default(self, resourceId):
+        return str(resourceId)
