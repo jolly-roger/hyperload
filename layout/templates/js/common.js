@@ -58,4 +58,25 @@ function addResource(id, alias, domain, isVerified){
 	});
 };
 
+function addJob(id, alias){
+    var jobHtml = "<tr>" +
+        "<td>" + alias + "</td>";
+		
+	jobHtml += "<td>" +
+			"<div class=\"row-fluid\" style=\"width: 200px;\">" +
+				"<div class=\"span6\">" +
+					"<button id=\"remove_job_" + id + "\">Remove</button>" +
+				"</div>" +
+				"<div class=\"span6\">" +
+				"</div>" +
+			"</div>" +
+		"</td></tr>";
+    
+    $("#jobs tbody").append(jobHtml);
+	$("#remove_job_" + id).button().click(function(){
+		$.get("/jobs/remove/" + id);
+		$(this).parent().parent().parent().parent().remove();
+	});
+};
+
 {% include "js/access.js"%}
