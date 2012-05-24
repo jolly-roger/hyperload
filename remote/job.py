@@ -40,7 +40,7 @@ class job(object):
         while True:
             data = s.recv(2)
             if data:
-                m += data
+                m += str(data, encoding="utf-8")
             else:
                 break
 
