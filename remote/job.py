@@ -21,11 +21,30 @@ class job(object):
     def start(self, jobId=None):
         s = socket.socket()
         s.connect(("hyperload.net", 11011))
-        s.send("{}")
-        m = s.recv(1024)
+        
+        #sendmsg = "{}"
+        #sendmsglen = len(sendmsg)
+        #totalsent = 0
+        #
+        #while totalsent < sendmsglen:
+        #    sent = s.send(sendmsg[totalsent:])
+        #    if sent == 0:
+        #        raise RuntimeError("socket connection broken")
+        #    totalsent = totalsent + sent
+        #
+        #recvmsg = ""
+        
+        s.send("{}".encode('ascii'))
+
+        m = s.recv()
         s.close()
         
         return m
+    
+    
+    
+    
+    
             
     @cherrypy.expose
     @authorization.isAuthorized
