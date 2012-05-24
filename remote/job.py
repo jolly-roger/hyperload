@@ -14,13 +14,16 @@ STOP_JOB_SIG = "stop_job"
 JOB_STATUS_SIG = "job_status"
 JOB_STATS_SIG = "job_stats"
 
+HOST_NAME = "hyperload.net"
+HOST_PORT = 11011
+
 
 class job(object):
     @cherrypy.expose
     @authorization.isAuthorized
     def start(self, jobId=None):
         s = socket.socket()
-        s.connect(("hyperload.net", 11011))
+        s.connect((HOST_NAME, HOST_PORT))
         
         #sendmsg = "{}"
         #sendmsglen = len(sendmsg)
@@ -36,23 +39,18 @@ class job(object):
         
         msg = "{"\
                     "\"header\":{"\
-                        "\"method\": \"start_job\","\
+                        "\"method\": \"" + START_JOB_SIG + "\","\
                         "\"job\": \"" + str(jobId) + "\""\
                     "}," \
                     "\"body\":{}"\
                "}"
         
-        s.send(msg.encode('ascii'))
+        s.send(msg.encode('utf-8'))
 
         m = s.recv(1024)
         s.close()
         
-        return m
-    
-    
-    
-    
-    
+        return m    
             
     @cherrypy.expose
     @authorization.isAuthorized
