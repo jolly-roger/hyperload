@@ -5,6 +5,7 @@ import urllib.request
 import dal.job
 import auth.user
 
+from layout import layout
 
 from auth import isAuthorized as authorization
 
@@ -44,4 +45,4 @@ class jobs(object):
     @cherrypy.expose
     @authorization.isAuthorized
     def default(self, resourceId):
-        return str(resourceId)
+        return layout.getJobs(resourceId)
