@@ -25,7 +25,7 @@ class jobs(object):
             
     @cherrypy.expose
     @authorization.isAuthorized
-    def getuserall(self, resourceId=None):
+    def getresourceall(self, resourceId=None):
         jobs = []
         
         if resourceId is not None:
