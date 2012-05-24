@@ -40,7 +40,7 @@ class job(object):
         msg = "{"\
                     "\"header\":{"\
                         "\"method\": \"" + START_JOB_SIG + "\","\
-                        "\"job\": \"" + str(jobId) + "\""\
+                        "\"job\": \"" + jobId + "\""\
                     "}," \
                     "\"body\":{}"\
                "}"
