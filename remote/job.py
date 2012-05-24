@@ -21,44 +21,56 @@ class job(object):
     @cherrypy.expose
     @authorization.isAuthorized
     def start(self, jobId=None):
-        s = socket.socket()
-        s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(s, START_JOB_SIG, jobId)
-        m = self.recvmsg(s)
-        s.close()
+        m = "{}"
+        
+        if jobId is not None:
+            s = socket.socket()
+            s.connect((HOST_NAME, HOST_PORT))
+            self.sendmsg(s, START_JOB_SIG, jobId)
+            m = self.recvmsg(s)
+            s.close()
         
         return m
             
     @cherrypy.expose
     @authorization.isAuthorized
     def stop(self, jobId=None):
-        s = socket.socket()
-        s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(s, STOP_JOB_SIG, jobId)
-        m = self.recvmsg(s)
-        s.close()
+        m = "{}"
+        
+        if jobId is not None:
+            s = socket.socket()
+            s.connect((HOST_NAME, HOST_PORT))
+            self.sendmsg(s, STOP_JOB_SIG, jobId)
+            m = self.recvmsg(s)
+            s.close()
         
         return m
         
     @cherrypy.expose
     @authorization.isAuthorized
     def getstatus(self, jobId):
-        s = socket.socket()
-        s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(s, JOB_STATUS_SIG, jobId)
-        m = self.recvmsg(s)
-        s.close()
+        m = "{}"
+        
+        if jobId is not None:
+            s = socket.socket()
+            s.connect((HOST_NAME, HOST_PORT))
+            self.sendmsg(s, JOB_STATUS_SIG, jobId)
+            m = self.recvmsg(s)
+            s.close()
         
         return m
         
     @cherrypy.expose
     @authorization.isAuthorized
     def getstats(self, jobId):
-        s = socket.socket()
-        s.connect((HOST_NAME, HOST_PORT))
-        self.sendmsg(s, JOB_STATS_SIG, jobId)
-        m = self.recvmsg(s)
-        s.close()
+        m = "{}"
+        
+        if jobId is not None:
+            s = socket.socket()
+            s.connect((HOST_NAME, HOST_PORT))
+            self.sendmsg(s, JOB_STATS_SIG, jobId)
+            m = self.recvmsg(s)
+            s.close()
         
         return m
     
