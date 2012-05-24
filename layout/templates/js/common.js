@@ -9,10 +9,16 @@ function addResource(id, alias, domain, isVerified){
         resourceHtml += "<td id=\"is-verified-resource_" + id + "\">" +
 			"<button id=\"verify_resource_" + id + "\">Verify</button></td>";
     };
-	
+
 	resourceHtml += "<td>" +
-			"<button id=\"remove_resource_" + id + "\">Remove</button>" +
-			"<button id=\"resource_jobs_" + id + "\">Jobs</button>" +
+			"<div class=\"row-fluid\">" +
+				"<div class=\"span6\">" +
+					"<button id=\"remove_resource_" + id + "\">Remove</button>" +
+				"</div>" +
+				"<div class=\"span6\">" +
+					"<button id=\"resource_jobs_" + id + "\">Jobs</button>" +
+				"</div>" +
+			"</div>" +
 		"</td></tr>";
     
     $("#resources tbody").append(resourceHtml);
