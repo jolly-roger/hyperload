@@ -64,7 +64,7 @@ function addJob(id, alias){
 		
 	jobHtml += "<td>" +
 			"<div class=\"row-fluid\" style=\"width: 500px;\">" +
-				"<div class=\"span2\">" +
+				"<div class=\"span3\">" +
 					"<button id=\"remove_job_" + id + "\">Remove</button>" +
 				"</div>" +
 				"<div class=\"span2\">" +
@@ -76,10 +76,8 @@ function addJob(id, alias){
 				"<div class=\"span2\">" +
 					"<button id=\"status_job_" + id + "\">Status</button>" +
 				"</div>" +
-				"<div class=\"span2\">" +
+				"<div class=\"span3\">" +
 					"<button id=\"stats_job_" + id + "\">Statistic</button>" +
-				"</div>" +
-				"<div class=\"span2\">" +
 				"</div>" +
 			"</div>" +
 		"</td></tr>";
