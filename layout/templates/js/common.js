@@ -49,7 +49,7 @@ function addResource(id, alias, domain, isVerified){
 			}
 		}).dialog( "open" );
 	});
-	$("#remove_resource_" + id).button().click(function(){
+	$("#remove_resource_" + id).click(function(){
 		$.get("/resources/remove/" + id);
 		$(this).parent().parent().remove();
 	});
