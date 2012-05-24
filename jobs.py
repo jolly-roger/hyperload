@@ -30,7 +30,7 @@ class jobs(object):
         
         if resourceId is not None:
             j = dal.job.job()
-            jobs = j.getuserall(resourceId)
+            jobs = j.getresourceall(resourceId)
             j.close()
         
         return  json.dumps(jobs)

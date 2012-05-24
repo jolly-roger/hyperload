@@ -6,7 +6,7 @@ BEGIN
         from job as j
         inner join resource_job as rj
             on j.id_job = rj.job_id
-        where rj.resource_id = resourceid;
+        where rj.resource_id = resourceid and j.is_removed = false;
 END;
 $BODY$
   LANGUAGE plpgsql;

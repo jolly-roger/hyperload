@@ -63,11 +63,21 @@ function addJob(id, alias){
         "<td>" + alias + "</td>";
 		
 	jobHtml += "<td>" +
-			"<div class=\"row-fluid\" style=\"width: 200px;\">" +
-				"<div class=\"span6\">" +
+			"<div class=\"row-fluid\" style=\"width: 400px;\">" +
+				"<div class=\"span2\">" +
 					"<button id=\"remove_job_" + id + "\">Remove</button>" +
 				"</div>" +
-				"<div class=\"span6\">" +
+				"<div class=\"span2\">" +
+					"<button id=\"start_job_" + id + "\">Start</button>" +
+				"</div>" +
+				"<div class=\"span2\">" +
+					"<button id=\"stop_job_" + id + "\">Stop</button>" +
+				"</div>" +
+				"<div class=\"span2\">" +
+					"<button id=\"status_job_" + id + "\">Status</button>" +
+				"</div>" +
+				"<div class=\"span2\">" +
+					"<button id=\"stats_job_" + id + "\">Statistic</button>" +
 				"</div>" +
 			"</div>" +
 		"</td></tr>";
@@ -76,6 +86,26 @@ function addJob(id, alias){
 	$("#remove_job_" + id).button().click(function(){
 		$.get("/jobs/remove/" + id);
 		$(this).parent().parent().parent().parent().remove();
+	});
+	$("#start_job_" + id).button().click(function(){
+		$.get("/remote/job/start/" + id, function(data){
+			alert(data);
+		});
+	});
+	$("#stop_job_" + id).button().click(function(){
+		$.get("/remote/job/stop/" + id, function(data){
+			alert(data);
+		});
+	});
+	$("#status_job_" + id).button().click(function(){
+		$.get("/remote/job/getstatus/" + id, function(data){
+			alert(data);
+		});
+	});
+	$("#stats_job_" + id).button().click(function(){
+		$.get("/remote/job/getstats/" + id, function(data){
+			alert(data);
+		});
 	});
 };
 

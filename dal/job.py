@@ -14,7 +14,7 @@ class job(base.base):
         
         return result[0][0]
         
-    def getuserall(self, resourceId):
+    def getresourceall(self, resourceId):
         self.cur.callproc("getjobs", [resourceId])
         
         return self.cur.fetchall()
