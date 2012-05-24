@@ -74,7 +74,7 @@ class job(object):
         
         return m
     
-    def sendmsg(s, method, jodId):
+    def sendmsg(s, method, jobId):
         msg = "{"\
                     "\"header\":{"\
                         "\"method\": \"" + method + "\","\
