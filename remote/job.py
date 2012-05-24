@@ -21,6 +21,11 @@ class job(object):
     def start(self, jobId=None):
         s = socket.socket()
         s.connect(("hyperload.net", 11011))
+        s.send("{}")
+        m = s.recv(1024)
+        s.close()
+        
+        return m
             
     @cherrypy.expose
     @authorization.isAuthorized
