@@ -62,7 +62,7 @@ class job(object):
         
         return m
     
-    def recvmsg(s):
+    def recvmsg(self, s):
         m = ""
         
         while True:
@@ -74,7 +74,7 @@ class job(object):
         
         return m
     
-    def sendmsg(s, method, jobId):
+    def sendmsg(self, s, method, jobId):
         msg = "{"\
                     "\"header\":{"\
                         "\"method\": \"" + method + "\","\
