@@ -34,7 +34,13 @@ class job(object):
         #
         #recvmsg = ""
         
-        s.send("{}".encode('ascii'))
+        s.send("{"\
+                    "header:{"\
+                        "method: \"start_job\","\
+                        "job: \"" + jobId + "\""\
+                    "}," \
+                    "body:{}"\
+               "}".encode('ascii'))
 
         m = s.recv(1024)
         s.close()
