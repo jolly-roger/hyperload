@@ -10,7 +10,10 @@ function addResource(id, alias, domain, isVerified){
 			"<button id=\"verify_resource_" + id + "\">Verify</button></td>";
     };
 	
-	resourceHtml += "<td><button id=\"remove_resource_" + id + "\">Remove</button></td></tr>";
+	resourceHtml += "<td>" +
+			"<button id=\"remove_resource_" + id + "\">Remove</button>" +
+			"<button id=\"resource_jobs_" + id + "\">Jobs</button>" +
+		"</td></tr>";
     
     $("#resources tbody").append(resourceHtml);
     $("#verify_resource_" + id).button().click(function() {
