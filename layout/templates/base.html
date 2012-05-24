@@ -21,7 +21,14 @@
     {% endblock %}
     </head>
     <body>
-        {% block mainContent %}
-        {% endblock %}
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    {% block mainContent %}
+                    {% endblock %}
+                </div>
+            </div>
+            
+        </div>
     </body>
 </html>
