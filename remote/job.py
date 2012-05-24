@@ -36,7 +36,7 @@ class job(object):
         
         s.send("{}".encode('ascii'))
 
-        m = s.recv()
+        m = s.recv(1024)
         s.close()
         
         return m
