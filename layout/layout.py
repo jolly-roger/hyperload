@@ -30,3 +30,7 @@ def getHome():
 def getJS():
     tmpl = getenv().get_template("js/common.js")
     return tmpl.render()
+    
+def getJobs(resourceId):
+    tmpl = getenv().get_template("pages/jobs.html")
+    return tmpl.render(resourceIdVal = resourceId)
