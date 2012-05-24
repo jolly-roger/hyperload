@@ -47,7 +47,7 @@ class job(object):
         
         s.send(msg.encode('utf-8'))
 
-        m = s.recv(1024)
+        m = s.recv(2)
         s.close()
         
         return m    
