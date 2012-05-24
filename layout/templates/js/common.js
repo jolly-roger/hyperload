@@ -47,6 +47,8 @@ function addResource(id, alias, domain, isVerified){
 		$.get("/resources/remove/" + id);
 		$(this).parent().parent().remove();
 	});
+	$("#resource_jobs_" + id).button().click(function(){
+	});
 };
 
 {% include "js/access.js"%}
