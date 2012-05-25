@@ -5,4 +5,5 @@ from . import body
 class message():
     #header = header.header()
     #body = body.body()
-    pass
+    #pass
+    test = "test"
