@@ -1,5 +1,5 @@
 from . import job
 
 
-class cherryNode(object):
+class remoteRoute(object):
     job = job.job()

@@ -10,7 +10,7 @@ from auth import access as webAuth
 import resources
 import jobs
 
-from remote import cherryNode
+from remote import remoteRoute
 
 
 class hyperload(object):
@@ -18,7 +18,7 @@ class hyperload(object):
     jobs = jobs.jobs()
     access = webAuth.access()
     
-    remote = remote.cherryNode()
+    remote = remote.remoteRoute()
     
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):
