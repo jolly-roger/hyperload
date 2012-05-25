@@ -1,10 +1,12 @@
 import cherrypy
 import socket
+import json
 
 import dal.job
 import auth.user
 
 from auth import isAuthorized as authorization
+from . import message
 
 
 START_JOB_SIG = "start_job"
@@ -30,7 +32,13 @@ class job(object):
             m = self.recvmsg(s)
             s.close()
         
-        return m
+        #return m
+        
+        msg = message.message()
+        msg.header.method = START_JOB_SIG
+        msg.header.job = 123
+        
+        return json.dumps(msg)
             
     @cherrypy.expose
     @authorization.isAuthorized

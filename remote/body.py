@@ -1,0 +1,2 @@
+class body(object):
+    pass
