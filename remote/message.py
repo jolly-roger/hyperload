@@ -1,6 +1,6 @@
-import remote.base as base
-import remote.header as header
-import remote.body as body
+from . import body
+from . import header
+from . import base
 
 
 class message(base.base):

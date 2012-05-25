@@ -1,4 +1,4 @@
-import remote.base as base
+from . import base
 
 
 class body(base.base):
