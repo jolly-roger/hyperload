@@ -7,6 +7,7 @@ import auth.user
 
 from auth import isAuthorized as authorization
 from . import message
+from . import remoteJsonEncoder
 
 
 START_JOB_SIG = "start_job"
@@ -38,7 +39,7 @@ class job(object):
         msg.header.method = START_JOB_SIG
         msg.header.job = 123
         
-        return msg.tojson()
+        return json.dumps(msg, cls=remoteJsonEncoder.remoteJsonEncoder)
             
     @cherrypy.expose
     @authorization.isAuthorized
