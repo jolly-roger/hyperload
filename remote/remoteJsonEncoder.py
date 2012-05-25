@@ -1,5 +1,8 @@
 import json
 
+import remote.message as message
+
+
 #from . import message
 #from . import header
 #from . import body
