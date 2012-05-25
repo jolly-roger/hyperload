@@ -1,6 +1,6 @@
 import json
 
-import remote.message as message
+from remote import *
 
 
 class remoteJsonEncoder(json.JSONEncoder):
