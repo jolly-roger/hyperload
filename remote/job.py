@@ -38,7 +38,7 @@ class job(object):
         #msg.header.method = START_JOB_SIG
         #msg.header.job = 123
         
-        return json.dumps(msg.__dict__)
+        return msg.tojson()
             
     @cherrypy.expose
     @authorization.isAuthorized
