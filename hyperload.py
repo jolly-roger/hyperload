@@ -18,7 +18,7 @@ class hyperload(object):
     jobs = jobs.jobs()
     access = webAuth.access()
     
-    remote = remote.remoteRoute()
+    remote = remoteRoute.remoteRoute()
     
     @cherrypy.expose
     def index(self, statusid = 0, *args, **kwargs):
