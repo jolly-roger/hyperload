@@ -33,13 +33,13 @@ class job(object):
             m = self.recvmsg(s)
             s.close()
         
-        return m
+        #return m
         
-        #msg = message.message()
-        #msg.header.method = START_JOB_SIG
-        #msg.header.job = 123
-        #
-        #return json.dumps(msg, cls=remoteJsonEncoder.remoteJsonEncoder)
+        msg = message.message()
+        msg.header.method = START_JOB_SIG
+        msg.header.job = 123
+        
+        return json.dumps(msg, cls=remoteJsonEncoder.remoteJsonEncoder)
             
     @cherrypy.expose
     @authorization.isAuthorized
