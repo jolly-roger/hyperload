@@ -24,32 +24,36 @@ class job(object):
     @cherrypy.expose
     @authorization.isAuthorized
     def start(self, jobId=None):
-        m = "{}"
+        m = message.message()
         
         if jobId is not None:
             s = socket.socket()
             s.connect((HOST_NAME, HOST_PORT))
-            self.sendmsg(s, START_JOB_SIG, jobId)
+            
+            m.header.method = START_JOB_SIG
+            m.header.job = jobId
+            
+            s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
+            
             m = self.recvmsg(s)
             s.close()
         
-        #return m
-        
-        msg = message.message()
-        msg.header.method = START_JOB_SIG
-        msg.header.job = 123
-        
-        return json.dumps(msg, cls=remoteJsonEncoder.remoteJsonEncoder)
+        return m
             
     @cherrypy.expose
     @authorization.isAuthorized
     def stop(self, jobId=None):
-        m = "{}"
+        m = message.message()
         
         if jobId is not None:
             s = socket.socket()
             s.connect((HOST_NAME, HOST_PORT))
-            self.sendmsg(s, STOP_JOB_SIG, jobId)
+            
+            m.header.method = STOP_JOB_SIG
+            m.header.job = jobId
+            
+            s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
+
             m = self.recvmsg(s)
             s.close()
         
@@ -63,7 +67,12 @@ class job(object):
         if jobId is not None:
             s = socket.socket()
             s.connect((HOST_NAME, HOST_PORT))
-            self.sendmsg(s, JOB_STATUS_SIG, jobId)
+            
+            m.header.method = JOB_STATUS_SIG
+            m.header.job = jobId
+            
+            s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
+            
             m = self.recvmsg(s)
             s.close()
         
@@ -77,7 +86,12 @@ class job(object):
         if jobId is not None:
             s = socket.socket()
             s.connect((HOST_NAME, HOST_PORT))
-            self.sendmsg(s, JOB_STATS_SIG, jobId)
+            
+            m.header.method = JOB_STATS_SIG
+            m.header.job = jobId
+            
+            s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
+            
             m = self.recvmsg(s)
             s.close()
         
@@ -94,14 +108,3 @@ class job(object):
                 break
         
         return m
-    
-    def sendmsg(self, s, method, jobId):
-        msg = "{"\
-                    "\"header\":{"\
-                        "\"method\": \"" + method + "\","\
-                        "\"job\": \"" + jobId + "\""\
-                    "}," \
-                    "\"body\":{}"\
-               "}"
-        
-        s.sendall(msg.encode("utf-8"))
