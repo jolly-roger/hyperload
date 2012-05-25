@@ -1,2 +1,2 @@
-class body(object):
+class body():
     pass

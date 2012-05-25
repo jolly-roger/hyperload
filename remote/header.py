@@ -1,3 +1,3 @@
-class header(object):
+class header():
     method = None
     job = None
