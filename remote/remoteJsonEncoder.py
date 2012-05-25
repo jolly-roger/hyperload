@@ -1,8 +1,8 @@
 import json
 
-import remote.message as message
-import remote.header as header
-import remote.body as body
+from remote import message
+from remote import header
+from remote import body
 
 
 class remoteJsonEncoder(json.JSONEncoder):
