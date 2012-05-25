@@ -1,9 +1,5 @@
 import json
 
-from . import message
-from . import header
-from . import body
-
 
 class remoteJsonEncoder(json.JSONEncoder):
     def default(self, obj):
