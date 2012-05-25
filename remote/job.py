@@ -35,8 +35,8 @@ class job(object):
         #return m
         
         msg = message.message()
-        #msg.header.method = START_JOB_SIG
-        #msg.header.job = 123
+        msg.header.method = START_JOB_SIG
+        msg.header.job = 123
         
         return msg.tojson()
             
