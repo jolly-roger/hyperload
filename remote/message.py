@@ -1,5 +1,5 @@
-import header
-import body
+from . import header
+from . import body
 
 
 class message(object):
