@@ -3,5 +3,5 @@ from . import body
 
 
 class message(object):
-    header = header.header()
+    #header = header.header()
     body = body.body()
