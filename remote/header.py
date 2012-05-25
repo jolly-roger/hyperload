@@ -1,3 +1,3 @@
-class header():
+class header(base):
     method = None
     job = None
