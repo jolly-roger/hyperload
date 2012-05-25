@@ -1,5 +1,3 @@
-import json
-
 from . import header
 from . import body
 from . import base
