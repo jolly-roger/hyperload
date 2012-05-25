@@ -4,6 +4,9 @@ from . import base
 
 
 class message(base.base):
-    header = header.header()
-    body = body.body()
+    def __init__(self):
+        self.header = header.header()
+        self.body = body.body()
+        
+        base.base.__init__(self)
     
