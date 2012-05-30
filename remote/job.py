@@ -33,12 +33,14 @@ class job(object):
             m.header.method = START_JOB_SIG
             m.header.job = jobId
             
-            s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
+            return json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8")
             
-            m = self.recvmsg(s)
-            s.close()
-        
-        return m
+        #    s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
+        #    
+        #    m = self.recvmsg(s)
+        #    s.close()
+        #
+        #return m
             
     @cherrypy.expose
     @authorization.isAuthorized
