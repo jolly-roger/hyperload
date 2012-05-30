@@ -86,16 +86,11 @@ class job(object):
         if jobId is not None:
             s = socket.socket()
             s.connect((HOST_NAME, HOST_PORT))
-            
-            m.header.method = JOB_STATS_SIG
-            m.header.job = jobId
-            
-            s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
-            
-            m = self.recvmsg(s)
-            s.close()
-        
-        return m
+            return self.sendmsg(s, JOB_STATS_SIG, jobId)
+        #    m = self.recvmsg(s)
+        #    s.close()
+        #
+        #return m
     
     def recvmsg(self, s):
         m = ""
@@ -108,3 +103,16 @@ class job(object):
                 break
         
         return m
+    
+    def sendmsg(self, s, method, jobId):
+        msg = "{"\
+                    "\"header\":{"\
+                        "\"method\": \"" + method + "\","\
+                        "\"job\": \"" + jobId + "\""\
+                    "}," \
+                    "\"body\":{}"\
+               "}"
+        
+        return msg
+        
+        #s.sendall(msg.encode("utf-8"))
