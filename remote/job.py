@@ -31,7 +31,7 @@ class job(object):
             s.connect((HOST_NAME, HOST_PORT))
             
             m.header.method = START_JOB_SIG
-            m.header.job = jobId
+            m.header.job = int(jobId)
             
             s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
             
@@ -50,7 +50,7 @@ class job(object):
             s.connect((HOST_NAME, HOST_PORT))
             
             m.header.method = STOP_JOB_SIG
-            m.header.job = jobId
+            m.header.job = int(jobId)
             
             s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
 
@@ -69,7 +69,7 @@ class job(object):
             s.connect((HOST_NAME, HOST_PORT))
             
             m.header.method = JOB_STATUS_SIG
-            m.header.job = jobId
+            m.header.job = int(jobId)
             
             s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
             
@@ -88,7 +88,7 @@ class job(object):
             s.connect((HOST_NAME, HOST_PORT))
             
             m.header.method = JOB_STATS_SIG
-            m.header.job = jobId
+            m.header.job = int(jobId)
             
             s.sendall(json.dumps(m, cls=remoteJsonEncoder.remoteJsonEncoder).encode("utf-8"))
             
