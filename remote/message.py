@@ -9,4 +9,7 @@ class message(base.base):
         self.body = body.body()
         
         base.base.__init__(self)
+        
+    def tojson(self):
+        return dict(header = self.header, body = self.body)
     
